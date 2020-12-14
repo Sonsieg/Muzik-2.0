@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { scale } from "../ScaleSheet";
 
-export default class ButtonTab extends Component {
+export class ButtonTab extends Component {
   constructor(props) {
     super(props);
   }
@@ -27,3 +27,4 @@ export default class ButtonTab extends Component {
     );
   }
 }
+export default ButtonTab;

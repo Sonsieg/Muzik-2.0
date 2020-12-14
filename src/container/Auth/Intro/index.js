@@ -38,9 +38,9 @@ export default class Intro extends Component {
             Play all night
           </Text>
           <ButtonTab title="Login"></ButtonTab>
-          <View style={{flexDirection:"row"}}>
+          <View style={{flexDirection:"row", justifyContent:"center"}}>
           <Text style={{ fontSize: scale(20), color: "#f8f8ff",fontStyle: "italic"}}>Don’t have an account?  </Text>
-          <TouchableOpacity onPress={()=>this.navigation.navigate("Login")}><Text style={{ fontSize: scale(20), color: "#f8f8ff",fontStyle: "italic"}}>Sign up</Text></TouchableOpacity>
+          <TouchableOpacity onPress={()=>this.navigation.navigate("Login")}><Text style={{ fontSize: scale(20), color: "#f8f8ff",fontStyle: "italic", fontWeight:"bold"}}>Sign up</Text></TouchableOpacity>
           </View>
         </View>
       </ImageBackground>

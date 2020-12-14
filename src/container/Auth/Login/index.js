@@ -1,13 +1,35 @@
-import React, { Component } from "react";
-import { ImageBackground } from "react-native";
-
-export default class Login extends Component {
+import React, {Component} from 'react';
+import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
+import InputText from '../../../components/InputText';
+import { scale } from '../../../components/ScaleSheet';
+import Top from '../../../components/Top';
+import ButtonTab from '../../../components/ButtonTab';
+import GoogleFacebook from '../../../components/GoogleFacebook';
+export class Login extends Component {
   render() {
     return (
       <ImageBackground
-        style={{ width: "100%", height: "100%" }}
-        source={require("../../../asset/images/background2.png")}
-      ></ImageBackground>
+        style={{width: '100%', height: '100%'}}
+        source={require('../../../asset/images/background2.png')}>
+        <View style={{marginHorizontal:scale(20), marginVertical:scale(10)}}>
+          <Top/>
+          <Text style={{fontSize:scale(30), color:"white", marginVertical:scale(10)}}>Login</Text>
+          <Text style={{fontStyle: "italic",fontSize:scale(16), color:"white"}}>Sign in for awesome chill and relax experiences.</Text>
+          <InputText title ="Email"/>
+          <InputText title ="Password"/>
+          <TouchableOpacity>
+          <Text style={{textAlign:"right",fontStyle: "italic",fontSize:scale(16), color:"white", marginTop:scale(20)}}>Forgot your password?</Text>
+          </TouchableOpacity>
+          <ButtonTab title="Login"/>
+          <View style={{flexDirection:"row", justifyContent:"center"}}>
+          <Text style={{ fontSize: scale(20), color: "white",fontStyle: "italic"}}>Don’t have an account?  </Text>
+          <TouchableOpacity onPress={()=>this.navigation.navigate("Login")}><Text style={{ fontSize: scale(20), color: "#f8f8ff",fontStyle: "italic", fontWeight:"bold"}}>Sign up</Text></TouchableOpacity>
+          </View>
+          <GoogleFacebook title="Or login with"/>
+        </View>
+        
+      </ImageBackground>
     );
   }
 }
+export default Login;
