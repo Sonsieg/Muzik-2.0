@@ -15,7 +15,7 @@ export class ButtonTab extends Component {
           backgroundColor: "#99BDDD",
           borderRadius: 5,
           justifyContent: "center",
-          marginVertical: scale(20),
+          marginVertical: scale(15),
         }}
       >
         <Text

@@ -11,18 +11,19 @@ export class Top extends Component {
           justifyContent: 'space-between',
           width: '100%',
           height: scale(70),
-          marginTop:scale(20)
+          marginTop: scale(10),
         }}>
         <Image
-          style={{width: '50%', height: scale(50)}}
+          style={{width: scale(50), height: scale(50)}}
           source={require('../../asset/images/minilogo.png')}
         />
         <TouchableOpacity>
-        <Image
-          resizeMode="cover"
-          style={{width: scale(50), height: scale(50), borderRadius: 25}}
-          source={require('../../asset/images/coco.png')}
-        />
+          {/* <Image
+            resizeMode="cover"
+            style={{width: scale(50), height: scale(50), borderRadius: 25}}
+            source={require('../../asset/images/coco.png')}
+          /> */}
+          {/* <Text>Sieg</Text> */}
         </TouchableOpacity>
       </View>
     );
