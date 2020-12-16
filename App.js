@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Home from './src/container/Auth/Home';
 import Intro from './src/container/Auth/Intro';
 import Login from './src/container/Auth/Login';
 import Registration from './src/container/Auth/Registration';
@@ -8,7 +9,8 @@ import Router from './src/router';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Registration/>
+      <Home/>
+      {/* <Registration/> */}
       {/* <Login/> */}
       {/* <Intro/> */}
       {/* <Router/> */}
