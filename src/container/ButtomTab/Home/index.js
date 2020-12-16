@@ -9,11 +9,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import InputText from '../../../components/InputText';
+
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
-import ButtonTab from '../../../components/ButtonTab';
-import GoogleFacebook from '../../../components/GoogleFacebook';
 import dataAlbum from '../../../data/index';
 import Feel from '../../../components/Feel';
 const itemAblum = ({item}) => {
