@@ -7,4 +7,12 @@ export default {
     feel3: require('../asset/images/feel3.png'),
     feel4: require('../asset/images/feel4.png'),
     background: require('../asset/images/background.png'),
+    list1: require('../asset/images/list1.png'),
+    list2: require('../asset/images/list2.png'),
+    list3: require('../asset/images/list3.png'),
+    list4: require('../asset/images/list4.png'),
+    list5: require('../asset/images/list5.png'),
+    list6: require('../asset/images/list6.png'),
+    search: require('../asset/images/search.png'),
+    mic: require('../asset/images/mic.png'),
 }

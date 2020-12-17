@@ -21,4 +21,39 @@ const dataAlbum = [
     img: asset.background
   },
 ];
-export default dataAlbum;
+const dataSearch=[
+  {
+    id: '1',
+    title: 'True Love',
+    img: asset.list1
+  },
+  {
+    id: '2',
+    title: 'Happy',
+    img: asset.list2
+  },
+  {
+    id: '3',
+    title: 'Fall in Love',
+    img: asset.list3
+  },
+  {
+    id: '4',
+    title: 'Walk in Space',
+    img: asset.list4
+  },
+  {
+    id: '5',
+    title: 'Melon Enegry',
+    img: asset.list5
+  },
+  {
+    id: '6',
+    title: 'Big city boi',
+    img: asset.list6
+  },
+]
+export {
+  dataAlbum,
+  dataSearch
+}
