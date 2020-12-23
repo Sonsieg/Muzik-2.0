@@ -15,4 +15,11 @@ export default {
     list6: require('../asset/images/list6.png'),
     search: require('../asset/images/search.png'),
     mic: require('../asset/images/mic.png'),
+    like1: require('../asset/images/like1.png'),
+    like2: require('../asset/images/like2.png'),
+    like3: require('../asset/images/like3.png'),
+    like4: require('../asset/images/like4.png'),
+    like5: require('../asset/images/like5.png'),
+    like6: require('../asset/images/like6.png'),
+    next: require('../asset/images/next.png')
 }

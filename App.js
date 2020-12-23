@@ -6,11 +6,12 @@ import Login from './src/container/Auth/Login';
 import Registration from './src/container/Auth/Registration';
 import Router from './src/router';
 import Search from './src/container/ButtomTab/Search';
+import UpdateProfile from './src/container/ButtomTab/UpdateProfile';
 // import Login from './src/container/Auth/Login';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Search/>
+      <UpdateProfile/>
       {/* <Home/> */}
       {/* <Registration/> */}
       {/* <Login/> */}
