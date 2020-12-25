@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Root } from 'native-base';
 import AppNavigator from './router';
+import {C, View} from 'react-native'
 export class AppContainer extends Component {
   render() {
     return (
-      <Root>
+      <View>
         <AppNavigator />
-      </Root>
+        </View>
     )
   }
 }

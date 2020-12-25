@@ -9,10 +9,10 @@ import Registration from './container/Auth/Registration';
 import Home from './container/ButtomTab/Home';
 import Search from './container/ButtomTab/Search';
 import UpdateProfile from './container/ButtomTab/UpdateProfile';
-
+import Demo from './container/Demo';
 const HomeStack = createStackNavigator(
     {
-      SearchTab: {screen: Home},
+      HomeTab: {screen: Home},
     },
     {
       initialRouteName: 'HomeTab',
@@ -36,7 +36,7 @@ const HomeStack = createStackNavigator(
   );
   const UpdateProfileStack = createStackNavigator(
     {
-      SearchTab: {screen: UpdateProfile},
+      UpdateProfileTab: {screen: UpdateProfile},
     },
     {
       initialRouteName: 'UpdateProfileTab',
@@ -65,7 +65,7 @@ const HomeStack = createStackNavigator(
         },
       },
   
-      SearchTab: {
+      SearchScreen: {
         screen: SearchStack,
         navigationOptions: () => {
           return {
@@ -81,7 +81,7 @@ const HomeStack = createStackNavigator(
           };
         },
       },
-      AccountScreen: {
+      UpdateProfileScreen: {
         screen: UpdateProfileStack,
         navigationOptions: () => {
           return {
@@ -105,43 +105,45 @@ const HomeStack = createStackNavigator(
       initialRouteName: 'HomeScreen',
     },
   );
-  // const AppStack = createStackNavigator(
-  //   {
-  //     AppTabbar: {screen: AppTabbar},
-  //     DetailSourse: {screen: DetailSourse},
-  //     BuySourse: {screen: BuySourse},
-  //     DetailLearnScreen: {screen: DetailLearnScreen},
-  //   },
-  //   {
-  //     headerMode: 'none',
-  //     initialRouteName: 'AppTabbar',
-  //     navigationOptions: {
-  //       header: null,
-  //     },
-  //   },
-  // );
-  const AuthStack = createStackNavigator(
+  const AppStack = createStackNavigator(
     {
-      Login: {screen: Login},
-      Registration: {screen: Registration}
-      // ForgetPass: {screen: ForgetPass},
+      AppTabbar: {screen: AppTabbar},
     },
     {
-      initialRouteName: 'Login',
+      headerMode: 'none',
+      initialRouteName: 'AppTabbar',
+      navigationOptions: {
+        header: null,
+      },
+    },
+  );
+  
+  const AuthStack = createStackNavigator(
+    {
+      Registration: {screen: Registration},
+      Demo: {screen: Demo},
+
+      Login: {screen: Login},
+      
+    },
+    {
+      initialRouteName: 'Registration',
       headerMode: 'none',
     },
   );
+  
   const AppNavigator = createSwitchNavigator(
     {
-      SplashScreen: {screen: Intro},
-      // MainIntro: {screen: MainIntro},
-      // AppStack: {screen: AppStack},
-      // AppTabbar: {screen: AppTabbar},
       AuthStack: {screen: AuthStack},
+      IntroStack: {screen: Intro},
+      AppStack: {screen: AppStack},
+      Demo : {screen :Demo}
+      // AppTabbar: {screen: AppTabbar},
     },
     {
-      initialRouteName: 'SplashScreen',
+      initialRouteName: 'IntroStack',
     },
   );
+  
   const AppContainer = createAppContainer(AppNavigator);
-export default AppContainer;
+  export default AppContainer;
