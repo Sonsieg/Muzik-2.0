@@ -21,5 +21,13 @@ export default {
     like4: require('../asset/images/like4.png'),
     like5: require('../asset/images/like5.png'),
     like6: require('../asset/images/like6.png'),
-    next: require('../asset/images/next.png')
+    next: require('../asset/images/next.png'),
+    Home_v: require('../asset/images/Home_v.png'),
+    HomeTab: require('../asset/images/HomeTab.png'),
+    AccountTab: require('../asset/images/Account.png'),
+    Account_v: require('../asset/images/Account_v.png'),
+    SearchTab: require('../asset/images/SearchTab.png'),
+    Search_v: require('../asset/images/Search_v.png'),
+
+   
 }

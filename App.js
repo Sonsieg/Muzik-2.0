@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/container/ButtomTab/Home';
+import AppContainer from './src/router';
 import Intro from './src/container/Auth/Intro';
 import Login from './src/container/Auth/Login';
 import Registration from './src/container/Auth/Registration';
@@ -11,12 +12,7 @@ import UpdateProfile from './src/container/ButtomTab/UpdateProfile';
 export default function App() {
   return (
     <View style={styles.container}>
-      <UpdateProfile/>
-      {/* <Home/> */}
-      {/* <Registration/> */}
-      {/* <Login/> */}
-      {/* <Intro/> */}
-      {/* <Router/> */}
+      <AppContainer/>
     </View>
   );
 }
