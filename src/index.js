@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 import AppNavigator from './router';
-import {C, View} from 'react-native'
+import {View} from 'react-native';
 export class AppContainer extends Component {
   render() {
     return (
       <View>
         <AppNavigator />
-        </View>
-    )
+      </View>
+    );
   }
 }
 

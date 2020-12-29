@@ -62,6 +62,7 @@ export class Home extends Component {
             // marginVertical: scale(10),
             // justifyContent: 'space-around',
             // flex: 1,
+            
           }}>
           <Top />
           <ScrollView>
@@ -70,6 +71,7 @@ export class Home extends Component {
                 fontSize: scale(20),
                 color: 'white',
                 // marginVertical: scale(10),
+                marginVertical:scale(20)
               }}>
               Saved for later
             </Text>
@@ -106,6 +108,11 @@ export class Home extends Component {
               <Feel uri={asset.feel2} text="Surprise" />
               <Feel uri={asset.feel3} text="Sad" />
               <Feel uri={asset.feel4} text="Angry" /><Feel uri={asset.feel1} text="Smile" />
+              <Text></Text>
+              <Text></Text>
+              <Text></Text>
+              <Text></Text>
+              <Text></Text>
           </ScrollView>
         </View>
       </ImageBackground>

@@ -48,7 +48,7 @@ export class Registration extends Component {
             <InputText title="Email" />
             <InputText title="Password" />
 
-            <ButtonTab title="Login" />
+            <ButtonTab title="Sign Up" />
 
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
               <Text
@@ -60,7 +60,7 @@ export class Registration extends Component {
                 Already have an account?{' '}
               </Text>
               <TouchableOpacity
-                onPress={() => this.navigation.navigate('Login')}>
+               onPress={()=>this.props.navigation.navigate('Login')}>
                 <Text
                   style={{
                     fontSize: scale(20),

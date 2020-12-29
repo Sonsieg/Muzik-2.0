@@ -57,18 +57,9 @@ export class UpdateProfile extends Component {
           <Edit2 text="Notifications" />
           <Edit2 text="Notifications App" />
           <Text style={styles.text}>Others</Text>
-
-          <TouchableOpacity>
-            <Text
-              style={{
-                fontSize: scale(20),
-                color: 'white',
-                fontStyle: 'italic',
-                fontWeight: 'normal',
-              }}>
-              Privary Policy
-            </Text>
-          </TouchableOpacity>
+            <Text></Text>
+            <Text></Text>
+            <Text></Text>
         </View>
       </ImageBackground>
     );

@@ -7,8 +7,10 @@ export class ButtonTab extends Component {
     super(props);
   }
   render() {
+    const {onPress}=  this.props;
     return (
       <TouchableOpacity
+      onPress={onPress}
         style={{
           width: "100%",
           height: "10%",

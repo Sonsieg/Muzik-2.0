@@ -1,149 +1,123 @@
-import React from 'react';
-import {createSwitchNavigator, createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import asset from './asset';
-import Intro from './container/Auth/Intro';
+import React, {Component} from 'react';
+import Home from '../src/container/ButtomTab/Home';
+import Search from '../src/container/ButtomTab/Search';
+import UpdateProfile from '../src/container/ButtomTab/UpdateProfile';
+import {createBottomTabNavigator, createAppContainer} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
 import Login from './container/Auth/Login';
 import Registration from './container/Auth/Registration';
-import Home from './container/ButtomTab/Home';
-import Search from './container/ButtomTab/Search';
-import UpdateProfile from './container/ButtomTab/UpdateProfile';
-import Demo from './container/Demo';
-const HomeStack = createStackNavigator(
-    {
-      HomeTab: {screen: Home},
-    },
-    {
-      initialRouteName: 'HomeTab',
-      headerMode: 'none',
-      navigationOptions: {
-        header: null,
-      },
-    },
-  );
-  const SearchStack = createStackNavigator(
-    {
-      SearchTab: {screen: Search},
-    },
-    {
-      initialRouteName: 'SearchTab',
-      headerMode: 'none',
-      navigationOptions: {
-        header: null,
-      },
-    },
-  );
-  const UpdateProfileStack = createStackNavigator(
-    {
-      UpdateProfileTab: {screen: UpdateProfile},
-    },
-    {
-      initialRouteName: 'UpdateProfileTab',
-      headerMode: 'none',
-      navigationOptions: {
-        header: null,
-      },
-    },
-  );
-  const AppTabbar = createBottomTabNavigator(
-    {
-      HomeScreen: {
-        screen: HomeStack,
-        navigationOptions: () => {
-          return {
-            tabBarLabel: ({focused, tintColor}) => (
-              <Tabbar
-                focused={focused}
-                tintColor={tintColor}
-                srcActive={asset.HomeTab}
-                srcDeactive={asset.Home_v}
-                label="Trang chủ"
-              />
-            ),
-          };
-        },
-      },
-  
-      SearchScreen: {
-        screen: SearchStack,
-        navigationOptions: () => {
-          return {
-            tabBarLabel: ({focused, tintColor}) => (
-              <Tabbar
-                focused={focused}
-                tintColor={tintColor}
-                srcActive={asset.SearchTab}
-                srcDeactive={asset.Search_v}
-                label="Tìm kiếm"
-              />
-            ),
-          };
-        },
-      },
-      UpdateProfileScreen: {
-        screen: UpdateProfileStack,
-        navigationOptions: () => {
-          return {
-            tabBarLabel: ({focused, tintColor}) => (
-              <Tabbar
-                focused={focused}
-                tintColor={tintColor}
-                srcActive={asset.Account}
-                srcDeactive={asset.Account_v}
-                label="Tài khoản"
-              />
-            ),
-          };
-        },
-      },
-    },
-    {
-      tabBarPosition: 'bottom',
-      swipeEnabled: true,
-      // animationEnabled : true ,
-      initialRouteName: 'HomeScreen',
-    },
-  );
-  const AppStack = createStackNavigator(
-    {
-      AppTabbar: {screen: AppTabbar},
-    },
-    {
-      headerMode: 'none',
-      initialRouteName: 'AppTabbar',
-      navigationOptions: {
-        header: null,
-      },
-    },
-  );
-  
-  const AuthStack = createStackNavigator(
-    {
-      Registration: {screen: Registration},
-      Demo: {screen: Demo},
+import Intro from './container/Auth/Intro';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createSwitchNavigator} from 'react-native-switch'
+const Tab = createBottomTabNavigator();
+// const StackNavigator = createStackNavigator();
+// const Bottom = () => {
+//   <Tab.Navigator
+//     tabBarOptions={{
+//       labelStyle: {fontSize: scale(12), justifyContent: 'center'},
+//     }}>
+//     <Tab.Screen
+//       name="Home"
+//       component={Home}
+//       options={{
+//         tabBarLabel: 'Trang chủ',
+//         tabBarIcon: ({color, size}) => (
+//           <MaterialCommunityIcons
+//             style={{padding: scale(6)}}
+//             name="home"
+//             color="#1e90ff"
+//             size={size * 1}
+//           />
+//         ),
+//       }}
+//     />
+//     <Tab.Screen
+//       name="Search"
+//       component={Search}
+//       options={{
+//         tabBarLabel: 'Tìm kiếm',
+//         tabBarIcon: ({color, size}) => (
+//           <MaterialCommunityIcons
+//             style={{padding: scale(6)}}
+//             name="book-open-variant"
+//             color="#1e90ff"
+//             size={size * 1}
+//           />
+//         ),
+//       }}
+//     />
+//     <Tab.Screen
+//       name="UpdateProfile"
+//       component={UpdateProfile}
+//       options={{
+//         tabBarLabel: 'Tài khoản',
+//         tabBarIcon: ({color, size}) => (
+//           <MaterialCommunityIcons
+//             style={{padding: scale(6)}}
+//             name="auto-fix"
+//             color="#1e90ff"
+//             size={size * 1}
+//           />
+//         ),
+//       }}
+//     />
+//   </Tab.Navigator>;
+// };
+// export default class Router extends Component {
+//   render() {
+//     return (
+//       <NavigationContainer>
+//         <Tab.Navigator screenOptions={{header: 'Home'}}>
+//           <Tab.Screen name="Login" component={Home} />
+//           <Tab.Screen name="Taikhoan" component={Search} />
+//           <Tab.Screen name="EditProfile" component={UpdateProfile} />
+//           {/* <Tab.Screen name="Bottom" component={Bottom} /> */}
+//         </Tab.Navigator>
+//       </NavigationContainer>
+//     );
+//   }
+// }
 
-      Login: {screen: Login},
-      
-    },
-    {
-      initialRouteName: 'Registration',
-      headerMode: 'none',
-    },
+function Router() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Feed"
+      tabBarOptions={{
+        activeTintColor: '#e91e63',
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarLabel: 'Search',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="bell" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={UpdateProfile}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
-  
-  const AppNavigator = createSwitchNavigator(
-    {
-      AuthStack: {screen: AuthStack},
-      IntroStack: {screen: Intro},
-      AppStack: {screen: AppStack},
-      Demo : {screen :Demo}
-      // AppTabbar: {screen: AppTabbar},
-    },
-    {
-      initialRouteName: 'IntroStack',
-    },
-  );
-  
-  const AppContainer = createAppContainer(AppNavigator);
-  export default AppContainer;
+}
+const AppContainer = createAppContainer(AppNavigator);
+export default AppContainer;

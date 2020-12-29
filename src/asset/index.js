@@ -28,6 +28,6 @@ export default {
     Account_v: require('../asset/images/Account_v.png'),
     SearchTab: require('../asset/images/SearchTab.png'),
     Search_v: require('../asset/images/Search_v.png'),
-
+    background2: require('../asset/images/background2.png')
    
 }

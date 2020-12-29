@@ -45,7 +45,7 @@ export class Login extends Component {
               Forgot your password?
             </Text>
           </TouchableOpacity>
-          <ButtonTab title="Login" />
+          <ButtonTab title="Login" onPress={() => this.props.navigation.navigate('MyTabs')}/>
           <Text></Text>
           
           <View style={{flexDirection: 'row', justifyContent: 'center'}}>
@@ -57,7 +57,7 @@ export class Login extends Component {
               }}>
               Don’t have an account?{' '}
             </Text>
-            <TouchableOpacity onPress={() => this.navigation.navigate('Login')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Registration')}>
               <Text
                 style={{
                   fontSize: scale(20),
