@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
+import asset from '../../asset';
 import {scale} from '../ScaleSheet';
 
 export class GoogleFacebook extends Component {
@@ -27,7 +28,7 @@ export class GoogleFacebook extends Component {
                 height: scale(50),
                 marginRight: scale(5),
               }}
-              source={require('../../asset/images/google.png')}
+              source={asset.google}
             />
           </TouchableOpacity>
           <TouchableOpacity>
@@ -38,7 +39,7 @@ export class GoogleFacebook extends Component {
                 height: scale(50),
                 marginLeft: scale(5),
               }}
-              source={require('../../asset/images/facebook.png')}
+              source={asset.facebook}
             />
           </TouchableOpacity>
         </View>

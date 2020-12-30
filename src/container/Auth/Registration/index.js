@@ -11,12 +11,13 @@ import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
 import ButtonTab from '../../../components/ButtonTab';
 import GoogleFacebook from '../../../components/GoogleFacebook';
+import asset from '../../../asset';
 export class Registration extends Component {
   render() {
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
-        source={require('../../../asset/images/background2.png')}>
+        source={asset.background2}>
         <View
           style={{
             marginHorizontal: scale(20),

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
+import asset from '../../asset';
 import {scale} from '../ScaleSheet';
 
 export class Top extends Component {
@@ -15,7 +16,7 @@ export class Top extends Component {
         }}>
         <Image
           style={{width: scale(50), height: scale(50)}}
-          source={require('../../asset/images/minilogo.png')}
+          source={asset.minilogo}
         />
         <TouchableOpacity>
           {/* <Image

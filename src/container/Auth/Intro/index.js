@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import asset from '../../../asset';
 import ButtonTab from '../../../components/ButtonTab';
 import {scale} from '../../../components/ScaleSheet';
 export default class Intro extends Component {
@@ -13,7 +14,7 @@ export default class Intro extends Component {
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
-        source={require('../../../asset/images/Home.png')}>
+        source={asset.Home}>
         <View
           style={{
             justifyContent: 'center',
@@ -28,7 +29,7 @@ export default class Intro extends Component {
               marginTop: '20%',
               marginVertical: scale(20),
             }}
-            source={require('../../../asset/images/Logo.png')}
+            source={asset.Logo}
           />
           <Text
             style={{

@@ -28,6 +28,14 @@ export default {
     Account_v: require('../asset/images/Account_v.png'),
     SearchTab: require('../asset/images/SearchTab.png'),
     Search_v: require('../asset/images/Search_v.png'),
-    background2: require('../asset/images/background2.png')
+    background2: require('../asset/images/background2.png'),
+    google: require('../asset/images/google.png'),
+    facebook: require('../asset/images/facebook.png'),
+    minilogo: require('../asset/images/minilogo.png'),
+    Home: require('../asset/images/Home.png'),
+    Logo: require('../asset/images/Logo.png'),
+    coco: require('../asset/images/coco.png'),
+    Home: require('../asset/images/Home.png'),
+    Home: require('../asset/images/Home.png'),
    
 }

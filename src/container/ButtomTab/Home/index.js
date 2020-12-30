@@ -55,7 +55,7 @@ export class Home extends Component {
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
-        source={require('../../../asset/images/background2.png')}>
+        source={asset.background2}>
         <View
           style={{
             marginHorizontal: scale(20),
@@ -104,10 +104,12 @@ export class Home extends Component {
             <Feel uri={asset.feel1} text="Smile" />
               <Feel uri={asset.feel2} text="Surprise" />
               <Feel uri={asset.feel3} text="Sad" />
-              <Feel uri={asset.feel4} text="Angry" /><Feel uri={asset.feel1} text="Smile" />
+              <Feel uri={asset.feel4} text="Angry" />
+              <Feel uri={asset.feel1} text="Smile" />
               <Feel uri={asset.feel2} text="Surprise" />
               <Feel uri={asset.feel3} text="Sad" />
-              <Feel uri={asset.feel4} text="Angry" /><Feel uri={asset.feel1} text="Smile" />
+              <Feel uri={asset.feel4} text="Angry" />
+              <Feel uri={asset.feel1} text="Smile" />
               <Text></Text>
               <Text></Text>
               <Text></Text>

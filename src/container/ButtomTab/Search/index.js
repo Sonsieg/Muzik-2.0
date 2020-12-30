@@ -98,7 +98,7 @@ export class Search extends Component {
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
-        source={require('../../../asset/images/background2.png')}>
+        source={asset.background2}>
         <View
           style={{
             marginHorizontal: scale(20),

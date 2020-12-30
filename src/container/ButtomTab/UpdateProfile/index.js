@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import asset from '../../../asset';
 import Edit from '../../../components/Edit';
 import Edit2 from '../../../components/Edit/Edit';
 import {scale} from '../../../components/ScaleSheet';
@@ -18,7 +19,7 @@ export class UpdateProfile extends Component {
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
-        source={require('../../../asset/images/background2.png')}>
+        source={asset.background2}>
         <View
           style={{
             marginHorizontal: scale(20),
@@ -45,7 +46,7 @@ export class UpdateProfile extends Component {
                 height: scale(150),
                 borderRadius: scale(75),
               }}
-              source={require('../../../asset/images/coco.png')}
+              source={asset.coco}
             />
           </View>
           <Text style={styles.text}>Account</Text>
