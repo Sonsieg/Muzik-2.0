@@ -36,6 +36,7 @@ export default {
     Logo: require('../asset/images/Logo.png'),
     coco: require('../asset/images/coco.png'),
     Home: require('../asset/images/Home.png'),
-    Home: require('../asset/images/Home.png'),
-   
+    name: require('../asset/images/name.png'),
+    phone: require('../asset/images/phone.png'),
+    back: require('../asset/images/back.png'),
 }

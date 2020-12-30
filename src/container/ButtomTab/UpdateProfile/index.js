@@ -50,7 +50,7 @@ export class UpdateProfile extends Component {
             />
           </View>
           <Text style={styles.text}>Account</Text>
-          <Edit text="Edit Profile" />
+          <Edit onPress={() => this.props.navigation.navigate('Profile')} text="Edit Profile" />
           <Edit text="Change Password" />
           <Edit text="Change Login Accces" />
           <Edit text="League" />

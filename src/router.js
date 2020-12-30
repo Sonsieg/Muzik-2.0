@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { scale } from './components/ScaleSheet';
 import { Image } from 'react-native';
 import asset from './asset';
+import Profile from './container/ButtomTab/UpdateProfile/Profile';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -78,41 +79,27 @@ function MyStack() {
     <Stack.Navigator
       initialRouteName="Intro"
       headerMode="none"
-      
-      // screenOptions={{
-      //   headerTintColor: 'white',
-      //   headerStyle: { backgroundColor: 'tomato' },
-      // }}
     >
       <Stack.Screen
         name="Intro"
         component={Intro}
-        // options={{
-        //   title: 'Awesome app',
-        // }}
       />
       <Stack.Screen
         name="Login"
         component={Login}
-        // options={{
-        //   title: 'My profile',
-        // }}
       />
       <Stack.Screen
         name="Registration"
         component={Registration}
-        // options={{
-        //   gestureEnabled: false,
-        // }}
       />
       <Stack.Screen
         name="MyTabs"
         component={MyTabs}
-        // options={{
-        //   gestureEnabled: false,
-        // }}
       />
-
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+      />
     </Stack.Navigator>
   );
 }

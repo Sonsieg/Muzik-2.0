@@ -5,8 +5,9 @@ import {scale} from '../ScaleSheet';
 
 export default class Edit extends Component {
   render() {
+    const {onPress} = this.props;
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <View
           style={{
             flexDirection: 'row',
