@@ -28,7 +28,7 @@ export class ItemInfor extends Component {
           style={{
             justifyContent: 'center',
             flexDirection: 'row',
-            alignItems:"center"
+            alignItems: 'center',
           }}>
           <Image
             source={source}
@@ -56,7 +56,7 @@ export class ItemInfor extends Component {
               fontSize: scale(14),
               textAlign: 'right',
               height: scale(60),
-              width:'50%',
+              width: '50%',
             }}
           />
         )}
@@ -81,7 +81,15 @@ export class ItemInfor extends Component {
               height: scale(44),
             }}>
             <TouchableOpacity onPress={onPress}>
-              <Text style={{fontSize: scale(12), color: 'blue'}}>{text}</Text>
+              <Text
+                style={{
+                  fontSize: scale(13),
+                  color: 'ghostwhite',
+                  // textAlign: 'center',
+                  paddingTop: scale(10)
+                }}>
+                {text}
+              </Text>
             </TouchableOpacity>
           </View>
         )}

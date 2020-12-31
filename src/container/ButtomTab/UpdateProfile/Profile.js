@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   Image,
   ImageBackground,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -10,6 +11,8 @@ import {
 import asset from '../../../asset';
 import ItemInfor from '../../../components/ItemInfo';
 import {scale} from '../../../components/ScaleSheet';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+import moment from 'moment'
 // import {Text, View} from 'native-base';
 
 export class Profile extends Component {
@@ -18,8 +21,20 @@ export class Profile extends Component {
     this.state = {
       name: '',
       phone: '',
+      birthday: '03-10-1999',
+      isDateTimePickerVisible: false
     };
   }
+  _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
+  _hideDateTimePicker = () => this.setState({isDateTimePickerVisible: false});
+
+  _handleDatePicked = (date) => {
+    this._hideDateTimePicker();
+    this.setState({
+      birthday: moment(date).format('DD-MM-YYYY'),
+    });
+  };
+
   render() {
     return (
       <ImageBackground
@@ -49,88 +64,106 @@ export class Profile extends Component {
             }}>
             Nói cho anh nghe điều em muốn
           </Text>
-          <TouchableOpacity>
-            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <Image
-                resizeMode="cover"
-                source={asset.coco}
-                style={{
-                  width: scale(100),
-                  height: scale(100),
-                  borderRadius: scale(50),
-                }}
-              />
-            </View>
-          </TouchableOpacity>
-          <Text
-            style={{
-              fontSize: scale(20),
-              color: 'white',
-              fontStyle: 'italic',
-              //   textAlign: 'center',
-            }}>
-            Thông tin cá nhân
-          </Text>
-          <ItemInfor
-            onChangeText={(value) => {
-              this.setState({name: value});
-            }}
-            autoCapitalize="none"
-            value={this.state.name}
-            source={asset.name}
-            name="Họ và tên"
-            txtInput
-            placeholder={'Nhập tên người dùng'}
-          />
-          <ItemInfor
-            onChangeText={(value) => {
-              this.setState({phone: value});
-            }}
-            keyboardType={'phone-pad'}
-            autoCapitalize="none"
-            value={this.state.phone}
-            source={asset.phone}
-            name="Số điện thoại"
-            txtInput
-            placeholder={'Nhập số điện thoại'}
-          />
-          <Text
-            style={{
-              fontSize: scale(16),
-              color: 'white',
-              fontStyle: 'italic',
-              // textAlign: 'center',
-            }}>
-            Bạn có chắc về lựa chọn của mình chứ ?
-          </Text>
-          <View
-            style={{
-              // width: '100%',
-              height: scale(60),
-              flexDirection: 'row',
-              backgroundColor: 'white',
-              borderRadius: scale(10),
-            }}>
-            <TouchableOpacity
-              style={{
-                width: '50%',
-                height: scale(60),
-                justifyContent: 'center',
-              }}
-              onPress={() => this.props.navigation.goBack()}>
-              <Text style={styles.text}>Trở lại</Text>
+          <ScrollView>
+            <TouchableOpacity>
+              <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Image
+                  resizeMode="cover"
+                  source={asset.coco}
+                  style={{
+                    width: scale(100),
+                    height: scale(100),
+                    borderRadius: scale(50),
+                  }}
+                />
+              </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            <Text
               style={{
-                width: '50%',
-                height: scale(60),
-                justifyContent: 'center',
+                fontSize: scale(20),
+                color: 'white',
+                fontStyle: 'italic',
+                //   textAlign: 'center',
+                marginVertical: scale(20),
               }}>
-              <Text style={styles.text}>Xác nhận</Text>
-            </TouchableOpacity>
-          </View>
-          <Text></Text>
-          <Text></Text>
+              Thông tin cá nhân
+            </Text>
+            <ItemInfor
+              onChangeText={(value) => {
+                this.setState({name: value});
+              }}
+              autoCapitalize="none"
+              value={this.state.name}
+              source={asset.name}
+              name="Họ và tên"
+              txtInput
+              placeholder={'Nhập tên người dùng'}
+            />
+            <ItemInfor
+              onChangeText={(value) => {
+                this.setState({phone: value});
+              }}
+              keyboardType={'phone-pad'}
+              autoCapitalize="none"
+              value={this.state.phone}
+              source={asset.phone}
+              name="Số điện thoại"
+              txtInput
+              placeholder={'Nhập số điện thoại'}
+            />
+            <ItemInfor
+              source={asset.date}
+              name="Ngày sinh"
+              touch
+              onPress={this._showDateTimePicker}
+              text={this.state.birthday ? this.state.birthday: 'Yêu cầu chọn ngày sinh'}
+            />
+            <DateTimePicker
+            is24Hour={false}
+            mode="date"
+            isVisible={this.state.isDateTimePickerVisible}
+            onConfirm={this._handleDatePicked}
+            onCancel={this._hideDateTimePicker}
+          />
+
+            <Text
+              style={{
+                fontSize: scale(16),
+                color: 'white',
+                fontStyle: 'italic',
+                // textAlign: 'center',
+                marginVertical: scale(10),
+              }}>
+              Bạn có chắc về lựa chọn của mình chứ ?
+            </Text>
+            <View
+              style={{
+                // width: '100%',
+                height: scale(60),
+                flexDirection: 'row',
+                backgroundColor: 'white',
+                borderRadius: scale(10),
+                marginVertical: scale(20),
+              }}>
+              <TouchableOpacity
+                style={{
+                  width: '50%',
+                  height: scale(60),
+                  justifyContent: 'center',
+                }}
+                onPress={() => this.props.navigation.goBack()}>
+                <Text style={styles.text}>Trở lại</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  width: '50%',
+                  height: scale(60),
+                  justifyContent: 'center',
+                }}>
+                <Text style={styles.text}>Xác nhận</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         </View>
       </ImageBackground>
     );

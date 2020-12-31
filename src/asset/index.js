@@ -39,4 +39,5 @@ export default {
     name: require('../asset/images/name.png'),
     phone: require('../asset/images/phone.png'),
     back: require('../asset/images/back.png'),
+    date: require('../asset/images/date.png'),
 }
