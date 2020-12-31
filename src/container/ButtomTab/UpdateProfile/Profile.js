@@ -12,7 +12,7 @@ import asset from '../../../asset';
 import ItemInfor from '../../../components/ItemInfo';
 import {scale} from '../../../components/ScaleSheet';
 import DateTimePicker from 'react-native-modal-datetime-picker';
-import moment from 'moment'
+import moment from 'moment';
 // import {Text, View} from 'native-base';
 
 export class Profile extends Component {
@@ -22,7 +22,7 @@ export class Profile extends Component {
       name: '',
       phone: '',
       birthday: '03-10-1999',
-      isDateTimePickerVisible: false
+      isDateTimePickerVisible: false,
     };
   }
   _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true});
@@ -47,7 +47,9 @@ export class Profile extends Component {
             marginVertical: scale(20),
             justifyContent: 'space-around',
           }}>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity
+            style={{width: scale(30), width: scale(30)}}
+            onPress={() => this.props.navigation.goBack()}>
             <Image
               source={asset.back}
               style={{width: scale(30), width: scale(30)}}
@@ -64,7 +66,7 @@ export class Profile extends Component {
             }}>
             Nói cho anh nghe điều em muốn
           </Text>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <TouchableOpacity>
               <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Image
@@ -116,15 +118,19 @@ export class Profile extends Component {
               name="Ngày sinh"
               touch
               onPress={this._showDateTimePicker}
-              text={this.state.birthday ? this.state.birthday: 'Yêu cầu chọn ngày sinh'}
+              text={
+                this.state.birthday
+                  ? this.state.birthday
+                  : 'Yêu cầu chọn ngày sinh'
+              }
             />
             <DateTimePicker
-            is24Hour={false}
-            mode="date"
-            isVisible={this.state.isDateTimePickerVisible}
-            onConfirm={this._handleDatePicked}
-            onCancel={this._hideDateTimePicker}
-          />
+              is24Hour={false}
+              mode="date"
+              isVisible={this.state.isDateTimePickerVisible}
+              onConfirm={this._handleDatePicked}
+              onCancel={this._hideDateTimePicker}
+            />
 
             <Text
               style={{

@@ -5,8 +5,8 @@ import Profile from './src/container/ButtomTab/UpdateProfile/Profile';
 export default function App() {
   return (
     <NavigationContainer>
-    {/* <MyStack></MyStack> */}
-    <Profile></Profile>
+    <MyStack></MyStack>
+    {/* <Profile></Profile> */}
     </NavigationContainer>
   );
 }
