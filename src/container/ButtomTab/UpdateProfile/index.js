@@ -54,13 +54,9 @@ export class UpdateProfile extends Component {
           <Edit text="Change Password" />
           <Edit text="Change Login Accces" />
           <Edit text="League" />
+          <Edit onPress={() => this.props.navigation.navigate('Login')} text="Logout" />
           <Text style={styles.text}>Notifications</Text>
           <Edit2 text="Notifications" />
-          <Edit2 text="Notifications App" />
-          <Text style={styles.text}>Others</Text>
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
         </View>
       </ImageBackground>
     );
