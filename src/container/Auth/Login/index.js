@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {ImageBackground, Text, TouchableOpacity, View, ScrollView} from 'react-native';
+import {
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from 'react-native';
 import InputText from '../../../components/InputText';
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
@@ -20,61 +26,69 @@ export class Login extends Component {
           }}>
           <Top />
           <ScrollView showsVerticalScrollIndicator={false}>
-          <Text
-            style={{
-              fontSize: scale(30),
-              color: 'white',
-              // marginVertical: scale(10),
-            }}>
-            Login
-          </Text>
-          <Text
-            style={{fontStyle: 'italic', fontSize: scale(16), color: 'white'}}>
-            Sign in for awesome chill and relax experiences.
-          </Text>
-          <InputText title="Email" />
-          <InputText title="Password" />
-          <TouchableOpacity>
             <Text
               style={{
-                textAlign: 'right',
+                fontSize: scale(30),
+                color: 'white',
+                // marginVertical: scale(10),
+              }}>
+              Login
+            </Text>
+            <Text
+              style={{
                 fontStyle: 'italic',
                 fontSize: scale(16),
                 color: 'white',
-                marginTop: scale(20),
               }}>
-              Forgot your password?
+              Sign in for awesome chill and relax experiences.
             </Text>
-          </TouchableOpacity>
-          <ButtonTab title="Login" onPress={() => this.props.navigation.navigate('MyTabs')}/>
-          <Text></Text>
-          
-          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-            <Text
-              style={{
-                fontSize: scale(20),
-                color: 'white',
-                fontStyle: 'italic',
-              }}>
-              Don’t have an account?{' '}
-            </Text>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Registration')}>
+            <InputText title="Email" />
+            <InputText title="Password" />
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('ForgetPass')}>
+              <Text
+                style={{
+                  textAlign: 'right',
+                  fontStyle: 'italic',
+                  fontSize: scale(16),
+                  color: 'white',
+                  marginTop: scale(20),
+                }}>
+                Forgot your password?
+              </Text>
+            </TouchableOpacity>
+            <ButtonTab
+              title="Login"
+              onPress={() => this.props.navigation.navigate('MyTabs')}
+            />
+            <Text></Text>
+
+            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
               <Text
                 style={{
                   fontSize: scale(20),
-                  color: '#f8f8ff',
+                  color: 'white',
                   fontStyle: 'italic',
-                  fontWeight: 'bold',
                 }}>
-                Sign up
+                Don’t have an account?{' '}
               </Text>
-            </TouchableOpacity>
-          </View>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
-
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Registration')}>
+                <Text
+                  style={{
+                    fontSize: scale(20),
+                    color: '#f8f8ff',
+                    fontStyle: 'italic',
+                    fontWeight: 'bold',
+                  }}>
+                  Sign up
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <Text></Text>
+            <Text></Text>
+            <Text></Text>
+            <Text></Text>
           </ScrollView>
           <GoogleFacebook title="Or login with" />
         </View>
