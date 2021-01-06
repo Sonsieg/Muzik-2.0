@@ -52,7 +52,7 @@ export class UpdateProfile extends Component {
           <Text style={styles.text}>Account</Text>
           <Edit onPress={() => this.props.navigation.navigate('Profile')} text="Edit Profile" />
           <Edit text="Change Password" />
-          <Edit text="Change Login Accces" />
+          {/* <Edit text="Change Login Accces" /> */}
           <Edit text="League" />
           <Edit onPress={() => this.props.navigation.navigate('Login')} text="Logout" />
           <Text style={styles.text}>Notifications</Text>
