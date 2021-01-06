@@ -26,6 +26,7 @@ function MyTabs() {
           fontSize: scale(13),
           justifyContent: 'center',
           fontWeight: 'bold',
+          paddingBottom:scale(5)
         },
         activeTintColor: '#483d8b',
         style: {height: scale(60)},
