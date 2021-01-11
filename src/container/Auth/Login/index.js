@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Alert,
 } from 'react-native';
 import InputText from '../../../components/InputText';
 import {scale} from '../../../components/ScaleSheet';
@@ -12,8 +13,73 @@ import Top from '../../../components/Top';
 import ButtonTab from '../../../components/ButtonTab';
 import GoogleFacebook from '../../../components/GoogleFacebook';
 import asset from '../../../asset';
+import {connect} from 'react-redux';
+import {checkValidMail, checkValidPassword} from '../../../utils/validate';
+import {loginAction,setUserInfoAction} from '../../../store/action';
+import {bindActionCreators} from 'redux';
 export class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: null,
+      email: 'buison1696@gmail.com',
+      password: '123456789',
+    };
+  }
+
+  showAlert = (message) => {
+    Alert.alert('Thông báo', `${message}`, [{text: 'Đồng ý'}]);
+  };
+  validateFied = (email, password) => {
+    if (email === '' && password === '') {
+      Alert.alert(
+        'Thông báo',
+        `Vui lòng điền đầy đủ thông tin`,
+        [{text: 'Đồng ý'}],
+        {cancelable: false},
+      );
+      return false;
+    }
+    let errorEmail = checkValidMail(email);
+    let errorPassword = checkValidPassword(password);
+    if (errorEmail || errorPassword) {
+      Alert.alert(
+        'Thông báo ',
+        `${errorEmail || errorPassword}.Vui lòng thử lại`,
+        [{text: 'Đồng ý'}],
+        {cancelable: false},
+      );
+      return false;
+    }
+    if (!errorPassword && !errorEmail) return true;
+  };
+  goLogin = (values) => {
+    console.log('lg1', values);
+    const {login} = this.props;
+    const infoInput = {};
+    if (this.validateFied(values.email, values.password)) {
+      infoInput.email = values.email;
+      infoInput.password = values.password;
+      infoInput.type = 'Account';
+      let body_api = {
+        body: infoInput,
+        callback: (err, data) => {
+          console.log('bước 6: sau khi gọi callback xong, trả về lại data', data);
+          if (data.error === false) {
+            // this.props.saveLogin(infoInput);
+            // this.props.saveLoggedUser(data && data.data);
+            // this.props.setUserInfoAction(data.data);
+            this.props.navigation.navigate('MyTabs');
+          }
+        },
+      };
+      console.log('buoc 1: goi login');
+      this.props.loginAction(body_api);
+    }
+  };
   render() {
+    const {email, password} = this.state;
+console.log('data unserinffo', this.props.userInfo) 
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
@@ -42,8 +108,22 @@ export class Login extends Component {
               }}>
               Sign in for awesome chill and relax experiences.
             </Text>
-            <InputText title="Email" />
-            <InputText title="Password" />
+            <InputText
+              secureTextEntry={false}
+              title="Email"
+              value={this.state.email}
+              onChangeText={(value) => {
+                this.setState({email: value});
+              }}
+            />
+            <InputText
+              secureTextEntry={true}
+              title="Password"
+              value={this.state.password}
+              onChangeText={(value) => {
+                this.setState({password: value});
+              }}
+            />
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('ForgetPass')}>
               <Text
@@ -58,8 +138,14 @@ export class Login extends Component {
               </Text>
             </TouchableOpacity>
             <ButtonTab
+              loading={this.props.loading}
               title="Login"
-              onPress={() => this.props.navigation.navigate('MyTabs')}
+              onPress={() =>
+                this.goLogin({
+                  email: this.state.email,
+                  password: this.state.password,
+                })
+              }
             />
             <Text></Text>
 
@@ -96,4 +182,18 @@ export class Login extends Component {
     );
   }
 }
-export default Login;
+const mapStateToProps = (state) => 
+(
+  {
+    userInfo : state.userInfo
+  }
+
+  // console.log('aaaaeafefa', user)
+);
+// const mapDispatchToProps = (dispatch) =>
+//   bindActionCreators({loginAction}, dispatch);
+const mapDispatchToProps = {
+  loginAction,
+  setUserInfoAction,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

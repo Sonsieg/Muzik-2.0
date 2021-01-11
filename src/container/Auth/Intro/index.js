@@ -52,6 +52,17 @@ export default class Intro extends Component {
             title="Login"
             onPress={() => this.props.navigation.navigate('Login')}
             />
+          {/* <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+            <Text
+              style={{
+                fontSize: scale(25),
+                color: '#f8f8ff',
+                fontStyle: 'italic',
+                marginVertical:scale(20)
+              }}>
+              Let's go babe!
+            </Text>
+          </TouchableOpacity> */}
           <View style={{flexDirection: 'row', justifyContent: 'center'}}>
             <Text
               style={{
@@ -62,8 +73,7 @@ export default class Intro extends Component {
               Don’t have an account?{' '}
             </Text>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Registration')}
-              >
+              onPress={() => this.props.navigation.navigate('Registration')}>
               <Text
                 style={{
                   fontSize: scale(20),
