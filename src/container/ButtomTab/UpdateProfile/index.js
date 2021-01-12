@@ -9,12 +9,21 @@ import {
   ScrollView,
 } from 'react-native';
 import asset from '../../../asset';
+import Dialog from '../../../components/Dialog';
 import Edit from '../../../components/Edit';
 import Edit2 from '../../../components/Edit/Edit';
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
 
 export class UpdateProfile extends Component {
+  openDialogLogout = () => {
+    this.popup.show();
+  };
+
+  logout = () => {
+    // this.props.removeLoggedUser();
+    this.props.navigation.navigate('Login');
+  };
   render() {
     return (
       <ImageBackground
@@ -54,7 +63,16 @@ export class UpdateProfile extends Component {
           <Edit text="Change Password" />
           {/* <Edit text="Change Login Accces" /> */}
           <Edit text="League" />
-          <Edit onPress={() => this.props.navigation.navigate('Login')} text="Logout" />
+          <Edit onPress={this.openDialogLogout} text="Logout" />
+          <Dialog
+          textOk={'Đồng ý'}
+          textCancel={'Từ chối'}
+          pressBtnOK={this.logout}
+          pressCancel={() => this.popup.hide()}
+          message="Bạn muốn đăng xuất ứng dụng ?"
+          ref={(ref) => (this.popup = ref)}
+          title
+        />
           <Text style={styles.text}>Notifications</Text>
           <Edit2 text="Notifications" />
         </View>
