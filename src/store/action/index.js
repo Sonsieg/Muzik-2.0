@@ -5,6 +5,7 @@ const actions = createActions({
   LOGIN_ACTION: (body_api) => body_api,
   CHANGE_PASS_ACTION : (body_api)=> body_api,
   REGISTRATION_ACTION : (body_api)=> body_api,
+  FORGET_PASS_ACTION : (body_api)=> body_api,
   SET_USER_INFO_ACTION: null,
   REMOVE_USER_INFO_ACTION: null,
 });
@@ -16,4 +17,5 @@ export const {
   registrationAction,
   setUserInfoAction,
   removeUserInfoAction,
+  forgetPassAction,
 } = actions;
