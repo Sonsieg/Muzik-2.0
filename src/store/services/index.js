@@ -7,7 +7,7 @@ export const loginService = async (body_api) => {
   await axios
     .post(`${END_POINT}id/login`,body_api, {headers: {Authorization: token}})
     .then(function (response) {
-      console.log('bước 4: nếu gọi API thành công thì tra ve response cho saga ',response);
+      console.log('bước 4: nếu gọi API thành công thì tra ve response cho saga ');
       // chua return
       result = response.data;
     })

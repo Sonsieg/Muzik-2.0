@@ -10,9 +10,9 @@ function* loginWatch() {
       const result = yield call(loginService, body);
       //console.log(result) // sau khi quan sát action sẽ sang service gọi API
       if (result) {
-        yield put(setUserInfoAction(result.data));// sau khi trả vể response thành công, lưu data cần vào action
+        // yield put(setUserInfoAction(result.data));// sau khi trả vể response thành công, lưu data cần vào action
         if (payload?.callback) {
-          console.log("bước 5, nhận response từ service rồi gọi vào callback", result)
+          console.log("bước 5, nhận response từ service rồi gọi vào callback")
           payload.callback('', result);
           // this.props.navigation.navigate('MyTabs');
         }

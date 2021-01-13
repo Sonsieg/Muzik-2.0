@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import { connect } from 'react-redux';
 import asset from '../../../asset';
 import Dialog from '../../../components/Dialog';
 import Edit from '../../../components/Edit';
 import Edit2 from '../../../components/Edit/Edit';
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
+import {removeUserInfoAction} from '../../../store/action/index'
 
 export class UpdateProfile extends Component {
   openDialogLogout = () => {
@@ -21,7 +23,7 @@ export class UpdateProfile extends Component {
   };
 
   logout = () => {
-    // this.props.removeLoggedUser();
+    this.props.removeUserInfoAction();
     this.props.navigation.navigate('Login');
   };
   render() {
@@ -80,7 +82,20 @@ export class UpdateProfile extends Component {
     );
   }
 }
-export default UpdateProfile;
+const mapStateToProps = (state) => 
+(
+  {
+    userInfo : state.userInfo
+  }
+
+  // console.log('aaaaeafefa', user)
+);
+// const mapDispatchToProps = (dispatch) =>
+//   bindActionCreators({loginAction}, dispatch);
+const mapDispatchToProps = {
+  removeUserInfoAction
+};
+export default connect(mapStateToProps,mapDispatchToProps)(UpdateProfile);
 const styles = StyleSheet.create({
   text: {
     fontSize: scale(18),

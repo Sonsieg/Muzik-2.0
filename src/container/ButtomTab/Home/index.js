@@ -14,6 +14,8 @@ import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
 import dataAlbum from '../../../data/index';
 import Feel from '../../../components/Feel';
+import {loginAction,setUserInfoAction} from '../../../store/action';
+import { connect } from 'react-redux';
 const itemAblum = ({item}) => {
   return (
     <View
@@ -52,6 +54,7 @@ const itemAblum = ({item}) => {
 
 export class Home extends Component {
   render() {
+    console.log('thong tin data sau khi luu: ', this.props.userInfo)
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
@@ -121,4 +124,17 @@ export class Home extends Component {
     );
   }
 }
-export default Home;
+const mapStateToProps = (state) => 
+(
+  {
+    userInfo : state.userInfo
+  }
+
+  // console.log('aaaaeafefa', user)
+);
+// const mapDispatchToProps = (dispatch) =>
+//   bindActionCreators({loginAction}, dispatch);
+const mapDispatchToProps = {
+  setUserInfoAction
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Home);

@@ -64,11 +64,11 @@ export class Login extends Component {
       let body_api = {
         body: infoInput,
         callback: (err, data) => {
-          console.log('bước 6: sau khi gọi callback xong, trả về lại data', data);
+          console.log('bước 6: sau khi gọi callback xong, trả về lại data');
           if (data.error === false) {
             // this.props.saveLogin(infoInput);
             // this.props.saveLoggedUser(data && data.data);
-            // this.props.setUserInfoAction(data.data);
+            this.props.setUserInfoAction(data.data);
             this.props.navigation.navigate('MyTabs');
           }
         },
@@ -79,7 +79,7 @@ export class Login extends Component {
   };
   render() {
     const {email, password} = this.state;
-console.log('data unserinffo', this.props.userInfo) 
+// console.log('thong tin data ban dau:', this.props.userInfo) 
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
