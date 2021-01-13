@@ -15,7 +15,7 @@ import GoogleFacebook from '../../../components/GoogleFacebook';
 import asset from '../../../asset';
 import {connect} from 'react-redux';
 import {checkValidMail, checkValidPassword} from '../../../utils/validate';
-import {loginAction,setUserInfoAction} from '../../../store/action';
+import {loginAction, setUserInfoAction} from '../../../store/action';
 import {bindActionCreators} from 'redux';
 export class Login extends Component {
   constructor(props) {
@@ -79,7 +79,7 @@ export class Login extends Component {
   };
   render() {
     const {email, password} = this.state;
-// console.log('thong tin data ban dau:', this.props.userInfo) 
+    // console.log('thong tin data ban dau:', this.props.userInfo)
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
@@ -182,14 +182,11 @@ export class Login extends Component {
     );
   }
 }
-const mapStateToProps = (state) => 
-(
-  {
-    userInfo : state.userInfo
-  }
+const mapStateToProps = (state) => ({
+  userInfo: state.userInfo,
+});
 
-  // console.log('aaaaeafefa', user)
-);
+// console.log('aaaaeafefa', user)
 // const mapDispatchToProps = (dispatch) =>
 //   bindActionCreators({loginAction}, dispatch);
 const mapDispatchToProps = {
