@@ -13,15 +13,17 @@ import ItemInfor from '../../../components/ItemInfo';
 import {scale} from '../../../components/ScaleSheet';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
+import { connect } from 'react-redux';
+import {setsetUserInfoAction} from '../../../store/action/index';
 // import {Text, View} from 'native-base';
 
 export class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      phone: '',
-      birthday: '03-10-1999',
+      name: 'Phạm Quang Núi',
+      phone: props.userInfo.phone,
+      birthday: props.userInfo.birthday,
       isDateTimePickerVisible: false,
     };
   }
@@ -34,8 +36,41 @@ export class Profile extends Component {
       birthday: moment(date).format('DD-MM-YYYY'),
     });
   };
+  upDateInfo = () => {
+    const {userInfo, updateProfile} = this.props;
+    const infoUpdate = {};
 
+    infoUpdate.email = this.state.email;
+    infoUpdate.fullname = this.state.name;
+    infoUpdate.phone = this.state.phone;
+    infoUpdate.sex = `${this.state.checked}`;
+    infoUpdate.birthday = this.state.birthday;
+    if (this.validateFied(this.state.checked, this.state.birthday)) {
+      updateProfile(user._id.$id, infoUpdate, (err, data) => {
+        if (err) return;
+        if (data && data.data && data.data.error === false) {
+          this.dropDownAlertRef.alertWithType(
+            'success',
+            'Thành công',
+            `Cập nhập tài khoản thành công !!`,
+          );
+          const dataUser = {data: data && data.data.data};
+          this.props.saveLoggedUser(dataUser);
+        }
+        if (data && data.data && data.data.error === true) {
+          this.dropDownAlertRef.alertWithType(
+            'error',
+            'Thất bại',
+            `${data && data.data && data.data.message[0]}`,
+          );
+        }
+      });
+    }
+  };
   render() {
+    const {birthday} = this.state;
+    console.log('hello birthday', birthday)
+    const {userInfo} = this.props;
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
@@ -119,9 +154,9 @@ export class Profile extends Component {
               touch
               onPress={this._showDateTimePicker}
               text={
-                this.state.birthday
+                birthday
                   ? this.state.birthday
-                  : 'Yêu cầu chọn ngày sinh'
+                  : 'Vui lòng chọn ngày'
               }
             />
             <DateTimePicker
@@ -161,6 +196,7 @@ export class Profile extends Component {
                 <Text style={styles.text}>Trở lại</Text>
               </TouchableOpacity>
               <TouchableOpacity
+              onPress={this.upDateInfo}
                 style={{
                   width: '50%',
                   height: scale(60),
@@ -175,8 +211,17 @@ export class Profile extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  userInfo: state.userInfo,
+});
 
-export default Profile;
+// console.log('aaaaeafefa', user)
+// const mapDispatchToProps = (dispatch) =>
+//   bindActionCreators({loginAction}, dispatch);
+const mapDispatchToProps = {
+  setsetUserInfoAction,
+};
+export default connect(mapStateToProps,mapDispatchToProps)(Profile);
 const styles = StyleSheet.create({
   text: {
     color: 'steelblue',
