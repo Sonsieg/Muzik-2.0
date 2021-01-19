@@ -7,7 +7,7 @@ const initialState = {
 
 export default handleActions(
   {
-    [setUserInfoAction.toString()]: (state, {payload}) => ({
+    [setUserInfoAction.toString()]: (state = initialState, {payload}) => ({
       ...state,
       userInfo: payload,
     }),

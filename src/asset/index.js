@@ -40,4 +40,10 @@ export default {
     phone: require('../asset/images/phone.png'),
     back: require('../asset/images/back.png'),
     date: require('../asset/images/date.png'),
+    left: require('../asset/images/left.png'),
+    right: require('../asset/images/right.png'),
+    repeat: require('../asset/images/repeat.png'),
+    download: require('../asset/images/download.png'),
+    stop: require('../asset/images/stop.png'),
+    music: require('../asset/images/music.png'),
 }

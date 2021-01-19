@@ -15,6 +15,7 @@ import {Image} from 'react-native';
 import asset from './asset';
 import Profile from './container/ButtomTab/UpdateProfile/Profile';
 import ForgetPass from './container/Auth/ForgetPass';
+import Playmusic from './container/ButtomTab/Home/Playmusic';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -87,6 +88,7 @@ function MyStack() {
       <Stack.Screen name="ForgetPass" component={ForgetPass} />
       <Stack.Screen name="MyTabs" component={MyTabs} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Playmusic" component={Playmusic} />
     </Stack.Navigator>
   );
 }
