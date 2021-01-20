@@ -1,8 +1,16 @@
-import { handleActions } from 'redux-actions';
-import {setUserInfoAction, removeUserInfoAction} from '../action';
+import {handleActions} from 'redux-actions';
+import {
+  setUserInfoAction,
+  removeUserInfoAction,
+  setLoginStateAction,
+  setLoginUserAction,
+} from '../action';
 // import {} from '../actions';
-const initialState = {
+export const initialState = {
   userInfo: [],
+  loginStatus: false,
+  user: [],
+  isChanged: false
 };
 
 export default handleActions(
@@ -11,10 +19,18 @@ export default handleActions(
       ...state,
       userInfo: payload,
     }),
-    [removeUserInfoAction.toString()]: (state,{}) =>({
+    [removeUserInfoAction.toString()]: (state = initialState, {}) => ({
       ...state,
       ...initialState,
-    })
+    }),
+    [setLoginStateAction.toString()]: (state = initialState, {payload}) => ({
+      ...state,
+      loginStatus: payload,
+    }),
+    [setLoginUserAction.toString()]: (state = initialState, {payload}) => ({
+      ...state,
+      user: payload.user,
+    }),
   },
   initialState,
 );

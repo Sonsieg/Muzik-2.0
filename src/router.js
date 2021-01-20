@@ -16,6 +16,7 @@ import asset from './asset';
 import Profile from './container/ButtomTab/UpdateProfile/Profile';
 import ForgetPass from './container/Auth/ForgetPass';
 import Playmusic from './container/ButtomTab/Home/Playmusic';
+import SplashScreen from './container/Auth/SpashScreen';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -81,7 +82,8 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator initialRouteName="Intro" headerMode="none">
+    <Stack.Navigator initialRouteName="SplashScreen" headerMode="none">
+      <Stack.Screen  name="SplashScreen" component={SplashScreen}/>
       <Stack.Screen name="Intro" component={Intro} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Registration" component={Registration} />

@@ -48,43 +48,30 @@ export default class Intro extends Component {
             }}>
             Play all night
           </Text>
-          <ButtonTab
-            title="Login"
-            onPress={() => this.props.navigation.navigate('Login')}
-            />
-          {/* <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-            <Text
-              style={{
-                fontSize: scale(25),
-                color: '#f8f8ff',
-                fontStyle: 'italic',
-                marginVertical:scale(20)
-              }}>
-              Let's go babe!
-            </Text>
-          </TouchableOpacity> */}
-          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-            <Text
-              style={{
-                fontSize: scale(20),
-                color: '#f8f8ff',
-                fontStyle: 'italic',
-              }}>
-              Don’t have an account?{' '}
-            </Text>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Registration')}>
+          {/* <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Login')}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <Text
                 style={{
-                  fontSize: scale(20),
+                  fontSize: scale(40),
                   color: '#f8f8ff',
                   fontStyle: 'italic',
-                  fontWeight: 'bold',
+                  marginVertical: scale(20),
                 }}>
-                Sign up
+                Let's go babe!
               </Text>
-            </TouchableOpacity>
-          </View>
+              <Image
+                resizeMode="contain"
+                style={{width: scale(25), height: scale(25), marginBottom: 0}}
+                source={asset.arrowright}
+              />
+            </View>
+          </TouchableOpacity> */}
+          <ButtonTab
+            title="Let's go babe !"
+            onPress={() => this.props.navigation.navigate('Login')}
+            />
         </View>
       </ImageBackground>
     );

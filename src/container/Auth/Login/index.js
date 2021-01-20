@@ -15,7 +15,7 @@ import GoogleFacebook from '../../../components/GoogleFacebook';
 import asset from '../../../asset';
 import {connect} from 'react-redux';
 import {checkValidMail, checkValidPassword} from '../../../utils/validate';
-import {loginAction, setUserInfoAction} from '../../../store/action';
+import {loginAction, setUserInfoAction, setLoginStateAction, setLoginUserAction} from '../../../store/action';
 import {bindActionCreators} from 'redux';
 export class Login extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ export class Login extends Component {
   };
   goLogin = (values) => {
     console.log('lg1', values);
-    const {login} = this.props;
+    // const {loginAction} = this.props;
     const infoInput = {};
     if (this.validateFied(values.email, values.password)) {
       infoInput.email = values.email;
@@ -69,6 +69,8 @@ export class Login extends Component {
             // this.props.saveLogin(infoInput);
             // this.props.saveLoggedUser(data && data.data);
             this.props.setUserInfoAction(data.data);
+            this.props.setLoginUserAction(infoInput);
+            this.props.setLoginStateAction(true);
             this.props.navigation.navigate('MyTabs');
           }
         },
@@ -192,5 +194,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   loginAction,
   setUserInfoAction,
+  setLoginStateAction,
+  setLoginUserAction
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
