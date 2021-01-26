@@ -47,4 +47,5 @@ export default {
     stop: require('../asset/images/stop.png'),
     music: require('../asset/images/music.png'),
     arrowright: require('../asset/images/arrow-right.png'),
+    heart: require('../asset/images/heart.png'),
 }

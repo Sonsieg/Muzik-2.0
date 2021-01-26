@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import asset from '../../../asset/index';
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   ImageBackground,
@@ -12,51 +13,54 @@ import {
 
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
-import dataAlbum from '../../../data/index';
+import dataAlbum, {SongList} from '../../../data/index';
 import Feel from '../../../components/Feel';
-import {loginAction,setUserInfoAction, setLoginStateAction} from '../../../store/action';
-import { connect } from 'react-redux';
-const itemAblum = ({item}) => {
-  return (
-    <View
-      style={{
-        height: scale(180),
-        width: scale(150),
-        marginRight: scale(10),
-        borderRadius: scale(10),
-        marginVertical: scale(20),
-        justifyContent: 'center',
-      }}>
-      <TouchableOpacity>
-        <Image
-          resizeMode="cover"
-          style={{
-            width: scale(150),
-            height: scale(150),
-            borderRadius: scale(10),
-          }}
-          source={item.img}
-        />
-        <Text
-          style={{
-            fontSize: scale(16),
-            color: '#f8f8ff',
-            fontStyle: 'italic',
-            textAlign: 'center',
-            fontWeight: 'bold',
-          }}>
-          {item.title}
-        </Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
+import {
+  loginAction,
+  setUserInfoAction,
+  setLoginStateAction,
+} from '../../../store/action';
+import {connect} from 'react-redux';
+import SongItem from '../../../components/SongItem';
+import axios from 'axios';
 export class Home extends Component {
-  
+  renderItem = ({item}) => {
+    return (
+      <SongItem key={item.id} name={item.name} image={item.image} singer={item.singer} />
+    );
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      muzik: [],
+    };
+  }
+  componentDidMount() {
+    axios
+      .get('https://fakeserver-musicaap.herokuapp.com/music')
+      .then((response) => {
+        // handle success
+        // console.log('tra ve danh sach bai hat', response.data);
+        // this.setState({muzik: response.data});
+        // console.log('muzik',response.data);
+        this.setState({muzik: response.data});
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
+  }
+  Emty =()=>{
+    return (
+      <View style={{justifyContent:"center"}}>
+        <ActivityIndicator size="large" color="white" style={{alignItems:"center", marginTop: "30%"}}/>
+      </View>
+    );
+  }
   render() {
-    console.log('thong tin data sau khi luu: ', this.props.userInfo)
-    console.log('trang thai login sau dang nhap', this.props.loginStatus)
+    console.log('thong tin data sau khi luu: ', this.props.userInfo);
+    console.log('trang thai login sau dang nhap', this.props.loginStatus);
+    // console.log('333aaa', this.state.muzik);
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
@@ -64,81 +68,53 @@ export class Home extends Component {
         <View
           style={{
             marginHorizontal: scale(20),
-            // marginVertical: scale(10),
-            // justifyContent: 'space-around',
-            // flex: 1,
-            
           }}>
           <Top />
-          <ScrollView>
-            <Text
-              style={{
-                fontSize: scale(20),
-                color: 'white',
-                // marginVertical: scale(10),
-                marginVertical:scale(20)
-              }}>
-              Saved for later
-            </Text>
-            <FlatList
-              horizontal={true}
-              data={dataAlbum}
-              renderItem={itemAblum}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
-            <Text
-              style={{
-                fontSize: scale(20),
-                color: 'white',
-                // marginVertical: scale(10),
-              }}>
-              How you feel today ?
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                marginVertical: scale(20),
-              }}>
-              <Feel uri={asset.feel1} text="Smile" />
-              <Feel uri={asset.feel2} text="Surprise" />
-              <Feel uri={asset.feel3} text="Sad" />
-              <Feel uri={asset.feel4} text="Angry" />
-            </View>
+          <Text
+            style={{
+              fontSize: scale(20),
+              color: 'white',
+            }}>
+            How you feel today ?
+          </Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              marginVertical: scale(20),
+            }}>
             <Feel uri={asset.feel1} text="Smile" />
-              <Feel uri={asset.feel2} text="Surprise" />
-              <Feel uri={asset.feel3} text="Sad" />
-              <Feel uri={asset.feel4} text="Angry" />
-              <Feel uri={asset.feel1} text="Smile" />
-              <Feel uri={asset.feel2} text="Surprise" />
-              <Feel uri={asset.feel3} text="Sad" />
-              <Feel uri={asset.feel4} text="Angry" />
-              <Feel uri={asset.feel1} text="Smile" />
-              <Text></Text>
-              <Text></Text>
-              <Text></Text>
-              <Text></Text>
-              <Text></Text>
-          </ScrollView>
+            <Feel uri={asset.feel2} text="Surprise" />
+            <Feel uri={asset.feel3} text="Sad" />
+            <Feel uri={asset.feel4} text="Angry" />
+          </View>
+          <Text
+            style={{
+              fontSize: scale(20),
+              color: 'white',
+              marginVertical:scale(10)
+            }}>
+            Top Track
+          </Text>
+          <FlatList
+            style={{height: '55%'}}
+            data={this.state.muzik}
+            renderItem={this.renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            ListEmptyComponent={()=>this.Emty()}
+            showsVerticalScrollIndicator={false}
+          />
         </View>
       </ImageBackground>
     );
   }
 }
-const mapStateToProps = (state) => 
-(
-  {
-    userInfo : state.userInfo,
-    loginStatus : state.loginStatus
-  }
-
-  // console.log('aaaaeafefa', user)
-);
-// const mapDispatchToProps = (dispatch) =>
-//   bindActionCreators({loginAction}, dispatch);
+const mapStateToProps = (state) => ({
+  userInfo: state.userInfo,
+  loginStatus: state.loginStatus,
+});
 const mapDispatchToProps = {
   setUserInfoAction,
-  setLoginStateAction
+  setLoginStateAction,
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

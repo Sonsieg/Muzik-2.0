@@ -53,7 +53,38 @@ const dataSearch=[
     img: asset.list6
   },
 ]
+const SongList =[
+  {
+    id: '1',
+    name: "Chếc Khăn Gió Ấm",
+    url: "http://api.mp3.zing.vn/api/streaming/audio/ZWZBZC9F/320",
+    singer: "Khánh Phương",
+    image: "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/covers/5/3/532da2124f0f17f8c4ee060756c2a569_1519722588.jpg",
+    time: 266,
+    islike: false
+  },
+  {
+    id: '2',
+    name: "Chếc Khăn Gió Ấm",
+    url: "http://api.mp3.zing.vn/api/streaming/audio/ZWZBZC9F/320",
+    singer: "Khánh Phương",
+    image: "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/covers/5/3/532da2124f0f17f8c4ee060756c2a569_1519722588.jpg",
+    time: 266,
+    islike: false
+  },
+  {
+    id:'3',
+    name: "Chếc Khăn Gió Ấm",
+    url: "http://api.mp3.zing.vn/api/streaming/audio/ZWZBZC9F/320",
+    singer: "Khánh Phương",
+    image: "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/covers/5/3/532da2124f0f17f8c4ee060756c2a569_1519722588.jpg",
+    time: 266,
+    islike: false
+  },
+  
+]
 export {
   dataAlbum,
-  dataSearch
+  dataSearch,
+  SongList
 }
