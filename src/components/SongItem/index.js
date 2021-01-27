@@ -4,7 +4,7 @@ import {scale} from '../ScaleSheet';
 import asset from '../../asset/index';
 export default class SongItem extends Component {
   render() {
-    const {item} = this.props;
+    const {item, onPress} = this.props;
     return (
       <View
         style={{
@@ -14,7 +14,7 @@ export default class SongItem extends Component {
           justifyContent:'space-between',
           // backgroundColor:"yellow"
         }}>
-        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}}>
+        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={onPress}>
           <Image
             source={{uri: this.props.image}}
             style={{

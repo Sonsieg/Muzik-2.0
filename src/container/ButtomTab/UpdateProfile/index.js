@@ -24,7 +24,7 @@ export class UpdateProfile extends Component {
 
   logout = () => {
     this.props.removeUserInfoAction();
-    this.props.navigation.navigate('Login');
+    // this.props.navigation.navigate('Login');
   };
   render() {
     return (

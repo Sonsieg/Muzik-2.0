@@ -15,7 +15,12 @@ import GoogleFacebook from '../../../components/GoogleFacebook';
 import asset from '../../../asset';
 import {connect} from 'react-redux';
 import {checkValidMail, checkValidPassword} from '../../../utils/validate';
-import {loginAction, setUserInfoAction, setLoginStateAction, setLoginUserAction} from '../../../store/action';
+import {
+  loginAction,
+  setUserInfoAction,
+  setLoginStateAction,
+  setLoginUserAction,
+} from '../../../store/action';
 import {bindActionCreators} from 'redux';
 export class Login extends Component {
   constructor(props) {
@@ -195,6 +200,6 @@ const mapDispatchToProps = {
   loginAction,
   setUserInfoAction,
   setLoginStateAction,
-  setLoginUserAction
+  setLoginUserAction,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

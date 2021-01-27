@@ -26,7 +26,18 @@ import axios from 'axios';
 export class Home extends Component {
   renderItem = ({item}) => {
     return (
-      <SongItem key={item.id} name={item.name} image={item.image} singer={item.singer} />
+      <SongItem
+        key={item.id}
+        name={item.name}
+        image={item.image}
+        singer={item.singer}
+        onPress={() => {
+          /* 1. Navigate to the Details route with params */
+          this.props.navigation.navigate('Playmusic', {
+            item: item,
+          });
+        }}
+      />
     );
   };
   constructor(props) {
@@ -50,13 +61,17 @@ export class Home extends Component {
         console.log(error);
       });
   }
-  Emty =()=>{
+  Emty = () => {
     return (
-      <View style={{justifyContent:"center"}}>
-        <ActivityIndicator size="large" color="white" style={{alignItems:"center", marginTop: "30%"}}/>
+      <View style={{justifyContent: 'center'}}>
+        <ActivityIndicator
+          size="large"
+          color="white"
+          style={{alignItems: 'center', marginTop: '30%'}}
+        />
       </View>
     );
-  }
+  };
   render() {
     console.log('thong tin data sau khi luu: ', this.props.userInfo);
     console.log('trang thai login sau dang nhap', this.props.loginStatus);
@@ -92,7 +107,7 @@ export class Home extends Component {
             style={{
               fontSize: scale(20),
               color: 'white',
-              marginVertical:scale(10)
+              marginVertical: scale(10),
             }}>
             Top Track
           </Text>
@@ -101,7 +116,7 @@ export class Home extends Component {
             data={this.state.muzik}
             renderItem={this.renderItem}
             keyExtractor={(item) => item.id.toString()}
-            ListEmptyComponent={()=>this.Emty()}
+            ListEmptyComponent={() => this.Emty()}
             showsVerticalScrollIndicator={false}
           />
         </View>
