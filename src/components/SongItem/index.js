@@ -2,7 +2,15 @@ import React, {Component} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {scale} from '../ScaleSheet';
 import asset from '../../asset/index';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 export default class SongItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showHeart: true,
+    };
+  }
+
   render() {
     const {item, onPress} = this.props;
     return (
@@ -11,10 +19,12 @@ export default class SongItem extends Component {
           flexDirection: 'row',
           alignItems: 'center',
           marginVertical: scale(8),
-          justifyContent:'space-between',
+          justifyContent: 'space-between',
           // backgroundColor:"yellow"
         }}>
-        <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={onPress}>
+        <TouchableOpacity
+          style={{flexDirection: 'row', alignItems: 'center'}}
+          onPress={onPress}>
           <Image
             source={{uri: this.props.image}}
             style={{
@@ -24,7 +34,7 @@ export default class SongItem extends Component {
             }}
             resizeMode="contain"
           />
-          <View style={{marginLeft:scale(8)}}>
+          <View style={{marginLeft: scale(8)}}>
             <Text
               style={{
                 fontSize: scale(16),
@@ -33,20 +43,19 @@ export default class SongItem extends Component {
               }}>
               {this.props.name}
             </Text>
-            <Text style={{
+            <Text
+              style={{
                 fontSize: scale(14),
                 color: 'white',
                 fontWeight: 'normal',
-              }}>{this.props.singer}</Text>
+              }}>
+              {this.props.singer}
+            </Text>
           </View>
         </TouchableOpacity>
         <View>
           <TouchableOpacity>
-            <Image
-              resizeMode="contain"
-              style={{width: scale(20), height: scale(20)}}
-              source={asset.heart}
-            />
+            <Icon name="heart-outline" size={scale(24)} color="white" />
           </TouchableOpacity>
         </View>
       </View>

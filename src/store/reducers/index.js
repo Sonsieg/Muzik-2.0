@@ -4,13 +4,15 @@ import {
   removeUserInfoAction,
   setLoginStateAction,
   setLoginUserAction,
+  setSaveMusicAction
 } from '../action';
 // import {} from '../actions';
 export const initialState = {
   userInfo: [],
   loginStatus: false,
   user: [],
-  isChanged: false
+  isChanged: false,
+  albumMusic: []
 };
 
 export default handleActions(
@@ -30,6 +32,10 @@ export default handleActions(
     [setLoginUserAction.toString()]: (state = initialState, {payload}) => ({
       ...state,
       user: payload.user,
+    }),
+    [setSaveMusicAction.toString()]: (state = initialState, {payload}) => ({
+      ...state,
+      albumMusic: payload,
     }),
   },
   initialState,

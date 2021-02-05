@@ -19,12 +19,14 @@ import {
   loginAction,
   setUserInfoAction,
   setLoginStateAction,
+  setSaveMusicAction,
 } from '../../../store/action';
 import {connect} from 'react-redux';
 import SongItem from '../../../components/SongItem';
 import axios from 'axios';
 export class Home extends Component {
   renderItem = ({item}) => {
+    console.log('eeeeee', item)
     return (
       <SongItem
         key={item.id}
@@ -34,7 +36,7 @@ export class Home extends Component {
         onPress={() => {
           /* 1. Navigate to the Details route with params */
           this.props.navigation.navigate('Playmusic', {
-            item: item,
+            item: item
           });
         }}
       />
@@ -48,13 +50,14 @@ export class Home extends Component {
   }
   componentDidMount() {
     axios
-      .get('https://fakeserver-musicaap.herokuapp.com/music')
+      .get('https://fakeserver-musicaap.herokuapp.com/foreignmusic')
       .then((response) => {
         // handle success
-        // console.log('tra ve danh sach bai hat', response.data);
         // this.setState({muzik: response.data});
         // console.log('muzik',response.data);
         this.setState({muzik: response.data});
+        this.props.setSaveMusicAction(response.data);
+        console.log('tra ve danh sach bai hat', response.data);
       })
       .catch((error) => {
         // handle error
@@ -131,5 +134,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setUserInfoAction,
   setLoginStateAction,
+  setSaveMusicAction
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

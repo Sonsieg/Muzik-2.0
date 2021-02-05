@@ -48,4 +48,7 @@ export default {
     music: require('../asset/images/music.png'),
     arrowright: require('../asset/images/arrow-right.png'),
     heart: require('../asset/images/heart.png'),
+    volume: require('../asset/images/volume.png'),
+    volume_up: require('../asset/images/volume_up.png'),
+    play: require('../asset/images/play.png'),
 }
