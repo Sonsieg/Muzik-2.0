@@ -214,10 +214,6 @@ export class Profile extends Component {
 const mapStateToProps = (state) => ({
   userInfo: state.userInfo,
 });
-
-// console.log('aaaaeafefa', user)
-// const mapDispatchToProps = (dispatch) =>
-//   bindActionCreators({loginAction}, dispatch);
 const mapDispatchToProps = {
   setsetUserInfoAction,
 };

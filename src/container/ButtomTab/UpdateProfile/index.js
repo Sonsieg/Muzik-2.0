@@ -16,7 +16,6 @@ import Edit2 from '../../../components/Edit/Edit';
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
 import {removeUserInfoAction} from '../../../store/action/index'
-
 export class UpdateProfile extends Component {
   openDialogLogout = () => {
     this.popup.show();
