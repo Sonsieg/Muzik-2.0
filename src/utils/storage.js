@@ -7,15 +7,15 @@ export const global = {
 
 export const handle = {
   setTabbarVisible(isVisible) {
-      global.tabBarVisible = isVisible;
+    global.tabBarVisible = isVisible;
   },
   setKeyStack(keyStack) {
-      global.keyStack = keyStack;
+    global.keyStack = keyStack;
   },
   setRoute(nameRoute) {
-      global.currentRoute = nameRoute;
+    global.currentRoute = nameRoute;
   },
   setAllProjects(allProjects) {
-      global.allProjects = allProjects;
+    global.allProjects = allProjects;
   },
-}
+};

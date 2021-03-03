@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import asset from '../../../asset';
 import ButtonTab from '../../../components/ButtonTab';
 import InputText from '../../../components/InputText';
@@ -30,7 +30,7 @@ export class ForgetPass extends Component {
     if (email === '') {
       Alert.alert(
         'Thông báo',
-        `Vui lòng điền đầy đủ thông tin`,
+        'Vui lòng điền đầy đủ thông tin',
         [{text: 'Đồng ý'}],
         {cancelable: false},
       );
@@ -46,7 +46,9 @@ export class ForgetPass extends Component {
       );
       return false;
     }
-    if (!errorEmail) return true;
+    if (!errorEmail) {
+      return true;
+    }
   };
   goForgetPass = (values) => {
     const {changePass} = this.props;
@@ -60,7 +62,7 @@ export class ForgetPass extends Component {
           if (data && data.data && data.data.error === false) {
             Alert.alert(
               'Thông báo ',
-              `Lấy mật khẩu thành công`,
+              'Lấy mật khẩu thành công',
               [
                 {
                   text: 'Đồng ý',
@@ -121,7 +123,7 @@ export class ForgetPass extends Component {
                   this.setState({email: value});
                 }}
               />
-              <Text></Text>
+              <Text />
               <ButtonTab
                 onPress={() =>
                   this.goForgetPass({
@@ -137,13 +139,12 @@ export class ForgetPass extends Component {
     );
   }
 }
-const mapStateToProps = () => ({
-});
+const mapStateToProps = () => ({});
 
 // console.log('aaaaeafefa', user)
 // const mapDispatchToProps = (dispatch) =>
 //   bindActionCreators({loginAction}, dispatch);
 const mapDispatchToProps = {
-  forgetPassAction
+  forgetPassAction,
 };
-export default connect(mapStateToProps,mapDispatchToProps)(ForgetPass);
+export default connect(mapStateToProps, mapDispatchToProps)(ForgetPass);

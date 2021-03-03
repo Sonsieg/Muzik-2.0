@@ -31,7 +31,9 @@ export default class Edit2 extends Component {
           trackColor={{false: '#767577', true: '#81b0ff'}}
           thumbColor={this.state.isEnabled ? '#f5dd4b' : '#f4f3f4'}
           ios_backgroundColor="#3e3e3e"
-          onValueChange={() => this.setState({isEnabled: !this.state.isEnabled})}
+          onValueChange={() =>
+            this.setState({isEnabled: !this.state.isEnabled})
+          }
           value={this.state.isEnabled}
         />
       </View>

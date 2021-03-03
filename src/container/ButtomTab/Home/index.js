@@ -26,7 +26,7 @@ import SongItem from '../../../components/SongItem';
 import axios from 'axios';
 export class Home extends Component {
   renderItem = ({item}) => {
-    console.log('eeeeee', item)
+    console.log('eeeeee', item);
     return (
       <SongItem
         key={item.id}
@@ -36,7 +36,7 @@ export class Home extends Component {
         onPress={() => {
           /* 1. Navigate to the Details route with params */
           this.props.navigation.navigate('Playmusic', {
-            item: item
+            item: item,
           });
         }}
       />
@@ -134,6 +134,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setUserInfoAction,
   setLoginStateAction,
-  setSaveMusicAction
+  setSaveMusicAction,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

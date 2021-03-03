@@ -28,7 +28,7 @@ export default class Edit extends Component {
 
           <Image
             resizeMode="contain"
-            style={{width: scale(20), width: scale(20), marginTop:scale(8)}}
+            style={{width: scale(20), width: scale(20), marginTop: scale(8)}}
             source={asset.next}
           />
         </View>

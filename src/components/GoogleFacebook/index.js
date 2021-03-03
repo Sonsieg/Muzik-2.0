@@ -6,9 +6,7 @@ import {scale} from '../ScaleSheet';
 export class GoogleFacebook extends Component {
   render() {
     return (
-      <View style={{justifyContent: 'center',
-       marginVertical: scale(20)
-       }}>
+      <View style={{justifyContent: 'center', marginVertical: scale(20)}}>
         <Text
           style={{
             fontSize: scale(16),

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import {Image, Text, TouchableOpacity} from 'react-native';
 import asset from '../../asset';
-import { scale } from '../ScaleSheet';
+import {scale} from '../ScaleSheet';
 
 export class Feel extends Component {
   render() {
@@ -12,12 +12,15 @@ export class Feel extends Component {
           style={{width: scale(70), height: scale(70)}}
           source={this.props.uri}
         />
-        <Text style={{
+        <Text
+          style={{
             fontSize: scale(14),
             color: '#f8f8ff',
             fontStyle: 'italic',
             textAlign: 'center',
-          }}>{this.props.text}</Text>
+          }}>
+          {this.props.text}
+        </Text>
       </TouchableOpacity>
     );
   }

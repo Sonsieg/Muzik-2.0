@@ -71,7 +71,7 @@ export default class Intro extends Component {
           <ButtonTab
             title="Let's go babe !"
             onPress={() => this.props.navigation.navigate('Login')}
-            />
+          />
         </View>
       </ImageBackground>
     );

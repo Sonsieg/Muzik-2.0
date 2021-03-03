@@ -4,12 +4,12 @@ import {ActivityIndicator, Image, Text, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from 'react-redux';
 import asset from '../../../asset';
-import { scale } from '../../../components/ScaleSheet';
+import {scale} from '../../../components/ScaleSheet';
 import {
   setUserInfoAction,
   setLoginStateAction,
   loginAction,
-  setLoginUserAction
+  setLoginUserAction,
 } from '../../../store/action';
 export class SplashScreen extends Component {
   componentDidMount() {
@@ -17,15 +17,14 @@ export class SplashScreen extends Component {
       this.loadApp();
     }, 600);
   }
-  loadApp =()=>{
-    const {isChanged, loginStatus,userInfo} = this.props;
-    console.log('trang thai login splash', loginStatus)
+  loadApp = () => {
+    const {isChanged, loginStatus, userInfo} = this.props;
+    console.log('trang thai login splash', loginStatus);
 
-    if(loginStatus){
+    if (loginStatus) {
       // this.resetLogin();
-      this.props.navigation.navigate('MyTabs')
-    }
-    else{
+      this.props.navigation.navigate('MyTabs');
+    } else {
       this.props.navigation.navigate('Login');
     }
     // if (isChanged) {
@@ -33,26 +32,25 @@ export class SplashScreen extends Component {
     // } else {
     //   this.props.navigation.navigate('Intro');
     // }
-  }
-  resetLogin = ()=>{
+  };
+  resetLogin = () => {
     const {userNew} = this.props;
     const infoInput = {};
     infoInput.email = userNew.email;
     infoInput.password = userNew.password;
     infoInput.type = 'Account';
     // console.log('uaududuauuusd', userNew, infoInput);
-   let body_api ={
-     body : infoInput,
-     callback : (err, data) =>{
-      if(data.error === false){
-        this.props.setUserInfoAction(data.data);
-        this.props.setLoginUserAction(infoInput);
-      }
-     }
-   }
-   this.props.loginAction(body_api);
-      
-  }
+    let body_api = {
+      body: infoInput,
+      callback: (err, data) => {
+        if (data.error === false) {
+          this.props.setUserInfoAction(data.data);
+          this.props.setLoginUserAction(infoInput);
+        }
+      },
+    };
+    this.props.loginAction(body_api);
+  };
   render() {
     return (
       <LinearGradient
@@ -67,19 +65,19 @@ export class SplashScreen extends Component {
           },
         ]}>
         <Image
-            resizeMode="contain"
-            style={{
-              width: scale(250),
-              height: scale(250),
-              marginTop: '20%',
-              marginVertical: scale(20),
-            }}
-            source={asset.Logo}
-          />
+          resizeMode="contain"
+          style={{
+            width: scale(250),
+            height: scale(250),
+            marginTop: '20%',
+            marginVertical: scale(20),
+          }}
+          source={asset.Logo}
+        />
         <Text
           style={{fontSize: scale(14), color: 'white'}}
           // onPress={() => this.onCheck()}
-          >
+        >
           Hãy nói anh nghe điều em muốn
         </Text>
         <ActivityIndicator style={{marginTop: scale(15)}} color="white" />
@@ -91,12 +89,12 @@ const mapStateToProps = (state) => ({
   userInfo: state.userInfo,
   user: state.user,
   loginStatus: state.loginStatus,
-  isChanged: state.isChanged
+  isChanged: state.isChanged,
 });
 const mapDispatchToProps = {
   setUserInfoAction,
   setLoginStateAction,
   loginAction,
-  setLoginUserAction
+  setLoginUserAction,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);

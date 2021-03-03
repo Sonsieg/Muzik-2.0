@@ -4,7 +4,7 @@ import {
   removeUserInfoAction,
   setLoginStateAction,
   setLoginUserAction,
-  setSaveMusicAction
+  setSaveMusicAction,
 } from '../action';
 // import {} from '../actions';
 export const initialState = {
@@ -12,7 +12,7 @@ export const initialState = {
   loginStatus: false,
   user: [],
   isChanged: false,
-  albumMusic: []
+  albumMusic: [],
 };
 
 export default handleActions(

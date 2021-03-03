@@ -9,7 +9,7 @@ export class SearchForm extends Component {
       <View
         style={{
           height: scale(60),
-        //   marginHorizontal: scale(20),
+          //   marginHorizontal: scale(20),
           //   borderWidth: 2,
           flexDirection: 'row',
           justifyContent: 'space-around',
@@ -36,12 +36,16 @@ export class SearchForm extends Component {
             placeholder="Artists, songs, or podcasts"
           />
         </View>
-        <View style={{justifyContent:"center", alignItems:"center"}}>
-        <Image
-          resizeMode="contain"
-          style={{width: scale(30), height: scale(30),marginRight:scale(20)}}
-          source={asset.mic}
-        />
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Image
+            resizeMode="contain"
+            style={{
+              width: scale(30),
+              height: scale(30),
+              marginRight: scale(20),
+            }}
+            source={asset.mic}
+          />
         </View>
       </View>
     );

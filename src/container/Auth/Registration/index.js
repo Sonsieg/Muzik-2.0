@@ -40,7 +40,7 @@ export class Registration extends Component {
     ) {
       Alert.alert(
         'Thông báo',
-        `Vui lòng điền đầy đủ thông tin`,
+        'Vui lòng điền đầy đủ thông tin',
         [{text: 'Đồng ý'}],
         {cancelable: false},
       );
@@ -66,7 +66,9 @@ export class Registration extends Component {
       );
       return false;
     }
-    if (!errorEmail) return true;
+    if (!errorEmail) {
+      return true;
+    }
   };
   goRegister = (values) => {
     const {register} = this.props;
@@ -92,7 +94,7 @@ export class Registration extends Component {
           if (data.error === false) {
             Alert.alert(
               'Thông báo ',
-              `Đăng kí tài khoản thành công`,
+              'Đăng kí tài khoản thành công',
               [
                 {
                   text: 'Đồng ý',
@@ -168,7 +170,7 @@ export class Registration extends Component {
               secureTextEntry={true}
               title="Confirm Password"
             />
-            <Text></Text>
+            <Text />
             <ButtonTab
               loading={this.props.loading}
               onPress={() =>
@@ -199,9 +201,9 @@ export class Registration extends Component {
                 </Text>
               </TouchableOpacity>
             </View>
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
+            <Text />
+            <Text />
+            <Text />
           </ScrollView>
           <GoogleFacebook title="Or login with" />
         </View>

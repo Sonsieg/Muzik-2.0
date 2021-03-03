@@ -86,7 +86,7 @@ export class ItemInfor extends Component {
                   fontSize: scale(13),
                   color: 'ghostwhite',
                   // textAlign: 'center',
-                  paddingTop: scale(10)
+                  paddingTop: scale(10),
                 }}>
                 {text}
               </Text>

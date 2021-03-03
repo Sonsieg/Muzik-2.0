@@ -1,7 +1,7 @@
-export const getIdYoutube = url => {
-  var ID = "";
+export const getIdYoutube = (url) => {
+  var ID = '';
   url = url
-    .replace(/(>|<)/gi, "")
+    .replace(/(>|<)/gi, '')
     .split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
   if (url[2] !== undefined) {
     ID = url[2].split(/[^0-9a-z_\-]/i);
@@ -9,5 +9,5 @@ export const getIdYoutube = url => {
   } else {
     ID = url;
   }
-  return ID + "";
+  return ID + '';
 };

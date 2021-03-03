@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 // if (__DEV__) middleware.push(logger);
-if(process.env.NODE_ENV === 'development'){
+if (process.env.NODE_ENV === 'development') {
   middleware.push(logger);
 }
 const enhancer = [applyMiddleware(...middleware)];

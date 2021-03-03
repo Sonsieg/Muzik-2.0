@@ -8,14 +8,14 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import asset from '../../../asset';
 import Dialog from '../../../components/Dialog';
 import Edit from '../../../components/Edit';
 import Edit2 from '../../../components/Edit/Edit';
 import {scale} from '../../../components/ScaleSheet';
 import Top from '../../../components/Top';
-import {removeUserInfoAction} from '../../../store/action/index'
+import {removeUserInfoAction} from '../../../store/action/index';
 export class UpdateProfile extends Component {
   openDialogLogout = () => {
     this.popup.show();
@@ -60,20 +60,23 @@ export class UpdateProfile extends Component {
             />
           </View>
           <Text style={styles.text}>Account</Text>
-          <Edit onPress={() => this.props.navigation.navigate('Profile')} text="Edit Profile" />
+          <Edit
+            onPress={() => this.props.navigation.navigate('Profile')}
+            text="Edit Profile"
+          />
           <Edit text="Change Password" />
           {/* <Edit text="Change Login Accces" /> */}
           <Edit text="League" />
           <Edit onPress={this.openDialogLogout} text="Logout" />
           <Dialog
-          textOk={'Đồng ý'}
-          textCancel={'Từ chối'}
-          pressBtnOK={this.logout}
-          pressCancel={() => this.popup.hide()}
-          message="Bạn muốn đăng xuất ứng dụng ?"
-          ref={(ref) => (this.popup = ref)}
-          title
-        />
+            textOk={'Đồng ý'}
+            textCancel={'Từ chối'}
+            pressBtnOK={this.logout}
+            pressCancel={() => this.popup.hide()}
+            message="Bạn muốn đăng xuất ứng dụng ?"
+            ref={(ref) => (this.popup = ref)}
+            title
+          />
           <Text style={styles.text}>Notifications</Text>
           <Edit2 text="Notifications" />
         </View>
@@ -81,20 +84,17 @@ export class UpdateProfile extends Component {
     );
   }
 }
-const mapStateToProps = (state) => 
-(
-  {
-    userInfo : state.userInfo
-  }
+const mapStateToProps = (state) => ({
+  userInfo: state.userInfo,
+});
 
-  // console.log('aaaaeafefa', user)
-);
+// console.log('aaaaeafefa', user)
 // const mapDispatchToProps = (dispatch) =>
 //   bindActionCreators({loginAction}, dispatch);
 const mapDispatchToProps = {
-  removeUserInfoAction
+  removeUserInfoAction,
 };
-export default connect(mapStateToProps,mapDispatchToProps)(UpdateProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateProfile);
 const styles = StyleSheet.create({
   text: {
     fontSize: scale(18),

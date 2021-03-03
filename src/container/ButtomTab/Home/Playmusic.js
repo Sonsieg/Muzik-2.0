@@ -18,7 +18,7 @@ const Playmusic = (props) => {
   const [number, setNumber] = useState(0);
   const [volume, setVolume] = useState(0);
   const {position, duration} = useProgress();
-  const [id,setId]=useState(0);
+  const [id, setId] = useState(0);
   console.log(route);
   const [isPlay, setIsPlay] = useState(true);
   useEffect(() => {
@@ -31,7 +31,7 @@ const Playmusic = (props) => {
   }, []);
   useEffect(() => {
     TrackPlayer.skip(String(route.params.item.id));
-    setId(route.params.item.id-1)
+    setId(route.params.item.id - 1);
   }, [route.params.item]);
   const Play = () => {
     if (!isPlay) {
@@ -44,18 +44,18 @@ const Playmusic = (props) => {
   };
   const Next = () => {
     TrackPlayer.skipToNext();
-    setId(id+1);
+    setId(id + 1);
     console.log('log item2', route.params.item);
   };
   const Back = () => {
-      TrackPlayer.skipToPrevious();
-      if(id >= 1){
-        setId(id-1);
-      }
+    TrackPlayer.skipToPrevious();
+    if (id >= 1) {
+      setId(id - 1);
+    }
   };
-  const Repeat =()=>{
-    TrackPlayer.reset()
-  }
+  const Repeat = () => {
+    TrackPlayer.reset();
+  };
   // console.log('bai hat hien tai', route.params.item.id)
   return (
     <ImageBackground
@@ -93,7 +93,7 @@ const Playmusic = (props) => {
               // marginVertical: scale(10),
             }}
             resizeMode="stretch"
-            source={{uri: props.albumMusic[id].image  }}
+            source={{uri: props.albumMusic[id].image}}
           />
           <View
             style={{
@@ -101,7 +101,9 @@ const Playmusic = (props) => {
               justifyContent: 'space-between',
               marginVertical: scale(10),
             }}>
-            <Text style={{color: 'white', fontSize: scale(12)}}>{position}</Text>
+            <Text style={{color: 'white', fontSize: scale(12)}}>
+              {position}
+            </Text>
             <Text style={{color: 'white', fontSize: scale(12)}}>
               {props.albumMusic[id].time}
             </Text>
@@ -118,7 +120,7 @@ const Playmusic = (props) => {
           step={1}
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <IconPlay text="redo-alt" onHandle={Repeat}/>
+          <IconPlay text="redo-alt" onHandle={Repeat} />
           <IconPlay text="backward" onHandle={Back} />
           <IconPlay text={isPlay ? 'pause' : 'play'} onHandle={Play} />
           <IconPlay text="forward" onHandle={Next} />

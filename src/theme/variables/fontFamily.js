@@ -1,4 +1,3 @@
-
 export default {
   // sspELI: 'SourceSansPro-ExtraLightItalic',
   // sspSBI: 'SourceSansPro-SemiBoldItalic',
@@ -10,7 +9,6 @@ export default {
   // sspL: 'SourceSansPro-Light',
   // sspB: 'SourceSansPro-Bold',
   // sspR: 'SourceSansPro-Regular',
-
   // // ---- Segoeui
   // sgBI: 'SegoeUI-BoldItalic',
   // sgSL: 'SegoeUI-Semilight',
@@ -18,7 +16,6 @@ export default {
   // sgL: 'SegoeUI-Light',
   // sgB: 'SegoeUI-Bold',
   // sg: 'SegoeUI',
-
   // robo: 'Roboto',
   // roboM: 'Roboto-Medium',
   // roboB: 'Roboto-Bold',

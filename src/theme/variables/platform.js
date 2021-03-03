@@ -1,18 +1,20 @@
 // @flow
 
 import color from 'color';
-import { Platform, Dimensions, PixelRatio, StatusBar } from 'react-native';
-import { scale, vScale } from 'components/ScaleSheet';
-import { PLATFORM } from './commonColor';
+import {Platform, Dimensions, PixelRatio, StatusBar} from 'react-native';
+import {scale, vScale} from 'components/ScaleSheet';
+import {PLATFORM} from './commonColor';
 import colors from './colors';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 const platform = Platform.OS;
 const platformStyle = undefined;
-const ipX = platform === PLATFORM.IOS && (height === 812 && width === 375 || height === 896 && width === 414);
-const ipXOnly = platform === PLATFORM.IOS && (height === 812 && width === 375);
-const ip11 = platform === PLATFORM.IOS && (height === 896 && width === 414);
+const ipX =
+  platform === PLATFORM.IOS &&
+  ((height === 812 && width === 375) || (height === 896 && width === 414));
+const ipXOnly = platform === PLATFORM.IOS && height === 812 && width === 375;
+const ip11 = platform === PLATFORM.IOS && height === 896 && width === 414;
 const android = Platform.OS === 'android';
 
 const sttBarHeight = Platform.select({
@@ -204,7 +206,7 @@ export default {
   // Header
   toolbarBtnColor: platform === PLATFORM.IOS ? '#007aff' : '#fff',
   toolbarDefaultBg: platform === PLATFORM.IOS ? '#F8F8F8' : '#3F51B5',
-  toolbarHeight:ipX ?  scale(52 + 35 ) : scale(52),
+  toolbarHeight: ipX ? scale(52 + 35) : scale(52),
   toolbarSearchIconSize: platform === PLATFORM.IOS ? 20 : 23,
   toolbarInputColor: platform === PLATFORM.IOS ? '#CECDD2' : '#fff',
   searchBarHeight: platform === PLATFORM.IOS ? 30 : 40,
@@ -213,14 +215,10 @@ export default {
   toolbarDefaultBorder: platform === PLATFORM.IOS ? '#a7a6ab' : '#3F51B5',
   iosStatusbar: platform === PLATFORM.IOS ? 'dark-content' : 'light-content',
   get statusBarColor() {
-    return color(this.toolbarDefaultBg)
-      .darken(0.2)
-      .hex();
+    return color(this.toolbarDefaultBg).darken(0.2).hex();
   },
   get darkenHeader() {
-    return color(this.tabBgColor)
-      .darken(0.03)
-      .hex();
+    return color(this.tabBgColor).darken(0.03).hex();
   },
 
   // Icon
@@ -343,7 +341,7 @@ export default {
     ...Platform.select({
       ios: {
         shadowColor: colors.black,
-        shadowOffset: { height: 2 },
+        shadowOffset: {height: 2},
         shadowOpacity: 0.18,
         shadowRadius: 1.5,
       },
@@ -356,13 +354,13 @@ export default {
     ...Platform.select({
       ios: {
         shadowColor: colors.black,
-        shadowOffset: { height: 2 },
+        shadowOffset: {height: 2},
         shadowOpacity: 0.18,
         shadowRadius: 1.5,
       },
       android: {
         elevation: 2,
-      }
-    })
-  }
+      },
+    }),
+  },
 };

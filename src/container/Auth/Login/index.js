@@ -39,7 +39,7 @@ export class Login extends Component {
     if (email === '' && password === '') {
       Alert.alert(
         'Thông báo',
-        `Vui lòng điền đầy đủ thông tin`,
+        'Vui lòng điền đầy đủ thông tin',
         [{text: 'Đồng ý'}],
         {cancelable: false},
       );
@@ -56,7 +56,9 @@ export class Login extends Component {
       );
       return false;
     }
-    if (!errorPassword && !errorEmail) return true;
+    if (!errorPassword && !errorEmail) {
+      return true;
+    }
   };
   goLogin = (values) => {
     console.log('lg1', values);
@@ -154,7 +156,7 @@ export class Login extends Component {
                 })
               }
             />
-            <Text></Text>
+            <Text />
 
             <View style={{flexDirection: 'row', justifyContent: 'center'}}>
               <Text
@@ -178,10 +180,10 @@ export class Login extends Component {
                 </Text>
               </TouchableOpacity>
             </View>
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
-            <Text></Text>
+            <Text />
+            <Text />
+            <Text />
+            <Text />
           </ScrollView>
           <GoogleFacebook title="Or login with" />
         </View>

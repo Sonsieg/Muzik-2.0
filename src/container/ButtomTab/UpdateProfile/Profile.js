@@ -13,7 +13,7 @@ import ItemInfor from '../../../components/ItemInfo';
 import {scale} from '../../../components/ScaleSheet';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import moment from 'moment';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {setsetUserInfoAction} from '../../../store/action/index';
 // import {Text, View} from 'native-base';
 
@@ -47,12 +47,14 @@ export class Profile extends Component {
     infoUpdate.birthday = this.state.birthday;
     if (this.validateFied(this.state.checked, this.state.birthday)) {
       updateProfile(user._id.$id, infoUpdate, (err, data) => {
-        if (err) return;
+        if (err) {
+          return;
+        }
         if (data && data.data && data.data.error === false) {
           this.dropDownAlertRef.alertWithType(
             'success',
             'Thành công',
-            `Cập nhập tài khoản thành công !!`,
+            'Cập nhập tài khoản thành công !!',
           );
           const dataUser = {data: data && data.data.data};
           this.props.saveLoggedUser(dataUser);
@@ -69,7 +71,7 @@ export class Profile extends Component {
   };
   render() {
     const {birthday} = this.state;
-    console.log('hello birthday', birthday)
+    console.log('hello birthday', birthday);
     const {userInfo} = this.props;
     return (
       <ImageBackground
@@ -153,11 +155,7 @@ export class Profile extends Component {
               name="Ngày sinh"
               touch
               onPress={this._showDateTimePicker}
-              text={
-                birthday
-                  ? this.state.birthday
-                  : 'Vui lòng chọn ngày'
-              }
+              text={birthday ? this.state.birthday : 'Vui lòng chọn ngày'}
             />
             <DateTimePicker
               is24Hour={false}
@@ -196,7 +194,7 @@ export class Profile extends Component {
                 <Text style={styles.text}>Trở lại</Text>
               </TouchableOpacity>
               <TouchableOpacity
-              onPress={this.upDateInfo}
+                onPress={this.upDateInfo}
                 style={{
                   width: '50%',
                   height: scale(60),
@@ -217,7 +215,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   setsetUserInfoAction,
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 const styles = StyleSheet.create({
   text: {
     color: 'steelblue',

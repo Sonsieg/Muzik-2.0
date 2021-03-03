@@ -50,7 +50,8 @@ export class Search extends Component {
   };
   renderSearch = ({item}) => {
     return (
-      <TouchableOpacity onPress={()=> this.props.navigation.navigate('Playmusic')}>
+      <TouchableOpacity
+        onPress={() => this.props.navigation.navigate('Playmusic')}>
         <View
           style={{
             height: scale(100),
@@ -61,7 +62,7 @@ export class Search extends Component {
             marginRight: scale(10),
             backgroundColor: '#BBABCF',
             flexDirection: 'row',
-            justifyContent:"space-evenly"
+            justifyContent: 'space-evenly',
           }}>
           <Image
             resizeMode="cover"
@@ -144,12 +145,12 @@ export class Search extends Component {
             Recently played
           </Text>
           <FlatList
-              horizontal={true}
-              data={dataAlbum}
-              renderItem={this.itemAblum}
-              keyExtractor={(item) => item.id}
-              showsHorizontalScrollIndicator={false}
-            />
+            horizontal={true}
+            data={dataAlbum}
+            renderItem={this.itemAblum}
+            keyExtractor={(item) => item.id}
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
       </ImageBackground>
     );

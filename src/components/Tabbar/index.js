@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Image, View, Text} from 'react-native';
-import { scale } from '../ScaleSheet';
-
+import {scale} from '../ScaleSheet';
 
 export default class Tabbar extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ export default class Tabbar extends Component {
   render() {
     const {label, focused, srcActive, srcDeactive} = this.props;
     return (
-      <View style={{justifyContent:"center"}}>
+      <View style={{justifyContent: 'center'}}>
         <Image
           resizeMode="contain"
           style={{
