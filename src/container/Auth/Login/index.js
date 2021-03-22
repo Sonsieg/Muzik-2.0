@@ -114,6 +114,7 @@ export class Login extends Component {
                 fontStyle: 'italic',
                 fontSize: scale(16),
                 color: 'white',
+                
               }}>
               Sign in for awesome chill and relax experiences.
             </Text>

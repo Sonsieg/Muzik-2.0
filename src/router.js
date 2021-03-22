@@ -84,7 +84,7 @@ const StackPublic = createStackNavigator();
 function MyStack() {
   const loginStatus = useSelector((state) => state.loginStatus);
   return (
-    <Stack.Navigator initialRouteName="SplashScreen" headerMode="none">
+    <Stack.Navigator initialRouteName="Intro" headerMode="none">
       {!loginStatus && (
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
       )}
