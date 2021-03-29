@@ -52,9 +52,6 @@ export class Home extends Component {
     axios
       .get('https://fakeserver-musicaap.herokuapp.com/foreignmusic')
       .then((response) => {
-        // handle success
-        // this.setState({muzik: response.data});
-        // console.log('muzik',response.data);
         this.setState({muzik: response.data});
         this.props.setSaveMusicAction(response.data);
       })

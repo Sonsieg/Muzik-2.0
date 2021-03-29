@@ -3,14 +3,17 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {scale} from '../ScaleSheet';
 import asset from '../../asset/index';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon2 from 'react-native-vector-icons/FontAwesome';
 export default class SongItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showHeart: true,
+      showHeart: false,
     };
   }
-
+  heart = () => {
+    this.setState({showHeart: !this.state.showHeart});
+  };
   render() {
     const {item, onPress} = this.props;
     return (
@@ -54,8 +57,12 @@ export default class SongItem extends Component {
           </View>
         </TouchableOpacity>
         <View>
-          <TouchableOpacity>
-            <Icon name="heart-outline" size={scale(24)} color="white" />
+          <TouchableOpacity onPress={this.heart}>
+            {this.state.showHeart === false ? (
+              <Icon name="heart-outline" size={scale(24)} color="white" />
+            ) : (
+              <Icon2 name="heart" size={scale(23)} color="white" />
+            )}
           </TouchableOpacity>
         </View>
       </View>

@@ -80,15 +80,15 @@ const Playmusic = (props) => {
           style={{
             width: '100%',
             height: '40%',
-            borderRadius: scale(10),
+            // borderRadius: scale(10),
             marginVertical: scale(10),
-            backgroundColor: 'white',
+            // backgroundColor: 'white',
           }}>
           <Image
             style={{
               width: '100%',
               height: '100%',
-              // borderRadius: scale(10),
+              borderRadius: scale(5),
               // marginVertical: scale(10),
             }}
             resizeMode="stretch"
@@ -104,7 +104,7 @@ const Playmusic = (props) => {
               {position}
             </Text>
             <Text style={{color: 'white', fontSize: scale(12)}}>
-              {props.albumMusic[id].time}
+              {props.albumMusic[id].time/60}
             </Text>
           </View>
         </View>
