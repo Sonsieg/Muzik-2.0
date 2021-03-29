@@ -26,7 +26,7 @@ import SongItem from '../../../components/SongItem';
 import axios from 'axios';
 export class Home extends Component {
   renderItem = ({item}) => {
-    console.log('eeeeee', item);
+    // console.log('eeeeee', item);
     return (
       <SongItem
         key={item.id}
@@ -57,11 +57,8 @@ export class Home extends Component {
         // console.log('muzik',response.data);
         this.setState({muzik: response.data});
         this.props.setSaveMusicAction(response.data);
-        console.log('tra ve danh sach bai hat', response.data);
       })
       .catch((error) => {
-        // handle error
-        console.log(error);
       });
   }
   Emty = () => {
@@ -76,9 +73,6 @@ export class Home extends Component {
     );
   };
   render() {
-    console.log('thong tin data sau khi luu: ', this.props.userInfo);
-    console.log('trang thai login sau dang nhap', this.props.loginStatus);
-    // console.log('333aaa', this.state.muzik);
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}

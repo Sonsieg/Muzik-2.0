@@ -61,7 +61,7 @@ export class Login extends Component {
     }
   };
   goLogin = (values) => {
-    console.log('lg1', values);
+    // console.log('lg1', values);
     // const {loginAction} = this.props;
     const infoInput = {};
     if (this.validateFied(values.email, values.password)) {
@@ -71,7 +71,7 @@ export class Login extends Component {
       let body_api = {
         body: infoInput,
         callback: (err, data) => {
-          console.log('bước 6: sau khi gọi callback xong, trả về lại data');
+          // console.log('bước 6: sau khi gọi callback xong, trả về lại data');
           if (data.error === false) {
             // this.props.saveLogin(infoInput);
             // this.props.saveLoggedUser(data && data.data);
@@ -82,7 +82,7 @@ export class Login extends Component {
           }
         },
       };
-      console.log('buoc 1: goi login');
+      // console.log('buoc 1: goi login');
       this.props.loginAction(body_api);
     }
   };

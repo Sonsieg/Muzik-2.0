@@ -58,7 +58,7 @@ export class ForgetPass extends Component {
       let body_api = {
         body: infoInput,
         callback: (err, data) => {
-          console.log('bước 6: sau khi gọi callback xong, trả về lại data');
+          // console.log('bước 6: sau khi gọi callback xong, trả về lại data');
           if (data && data.data && data.data.error === false) {
             Alert.alert(
               'Thông báo ',
@@ -74,7 +74,7 @@ export class ForgetPass extends Component {
           }
         },
       };
-      console.log('buoc 1: goi login');
+      // console.log('buoc 1: goi login');
       this.props.forgetPassAction(body_api);
     }
   };

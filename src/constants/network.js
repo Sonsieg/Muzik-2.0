@@ -12,7 +12,7 @@ const getLinkLive = (url, methods) => {
         resolve(response.data);
       })
       .catch((error) => {
-        console.log('error', error);
+        // console.log('error', error);
       });
   });
 };

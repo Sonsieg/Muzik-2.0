@@ -13,7 +13,7 @@ import {
 
 function* loginWatch() {
   yield takeLatest(loginAction, function* ({payload}) {
-    console.log('bước 2: saga quan sát action');
+    // console.log('bước 2: saga quan sát action');
     try {
       const {body} = payload;
       const result = yield call(loginService, body);
@@ -21,7 +21,7 @@ function* loginWatch() {
       if (result) {
         // yield put(setUserInfoAction(result.data));// sau khi trả vể response thành công, lưu data cần vào action
         if (payload?.callback) {
-          console.log('bước 5, nhận response từ service rồi gọi vào callback');
+          // console.log('bước 5, nhận response từ service rồi gọi vào callback');
           payload.callback('', result);
           // this.props.navigation.navigate('MyTabs');
         }
@@ -34,7 +34,7 @@ function* loginWatch() {
 }
 function* registrationWatch() {
   yield takeLatest(registrationAction, function* ({payload}) {
-    console.log('bước 2: saga quan sát action');
+    // console.log('bước 2: saga quan sát action');
     try {
       const {body} = payload;
       const result = yield call(registrationService, body);
@@ -42,7 +42,7 @@ function* registrationWatch() {
       if (result) {
         // yield put(setUserInfoAction(result.data));// sau khi trả vể response thành công, lưu data cần vào action
         if (payload?.callback) {
-          console.log('bước 5, nhận response từ service rồi gọi vào callback');
+          // console.log('bước 5, nhận response từ service rồi gọi vào callback');
           payload.callback('', result);
           // this.props.navigation.navigate('MyTabs');
         }
@@ -55,7 +55,7 @@ function* registrationWatch() {
 }
 function* forgetPassWatch() {
   yield takeLatest(forgetPassAction, function* ({payload}) {
-    console.log('bước 2: saga quan sát action');
+    // console.log('bước 2: saga quan sát action');
     try {
       const {body} = payload;
       const result = yield call(forgetPassService, body);
@@ -63,7 +63,7 @@ function* forgetPassWatch() {
       if (result) {
         // yield put(setUserInfoAction(result.data));// sau khi trả vể response thành công, lưu data cần vào action
         if (payload?.callback) {
-          console.log('bước 5, nhận response từ service rồi gọi vào callback');
+          // console.log('bước 5, nhận response từ service rồi gọi vào callback');
           payload.callback('', result);
           // this.props.navigation.navigate('MyTabs');
         }

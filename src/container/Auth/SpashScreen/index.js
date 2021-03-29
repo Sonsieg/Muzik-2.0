@@ -19,7 +19,6 @@ export class SplashScreen extends Component {
   }
   loadApp = () => {
     const {isChanged, loginStatus, userInfo} = this.props;
-    console.log('trang thai login splash', loginStatus);
 
     if (loginStatus) {
       // this.resetLogin();

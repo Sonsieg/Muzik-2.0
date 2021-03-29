@@ -19,7 +19,6 @@ const Playmusic = (props) => {
   const [volume, setVolume] = useState(0);
   const {position, duration} = useProgress();
   const [id, setId] = useState(0);
-  console.log(route);
   const [isPlay, setIsPlay] = useState(true);
   useEffect(() => {
     TrackPlayer.setupPlayer().then(async () => {
@@ -45,7 +44,7 @@ const Playmusic = (props) => {
   const Next = () => {
     TrackPlayer.skipToNext();
     setId(id + 1);
-    console.log('log item2', route.params.item);
+    // console.log('log item2', route.params.item);
   };
   const Back = () => {
     TrackPlayer.skipToPrevious();
