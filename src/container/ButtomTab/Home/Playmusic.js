@@ -10,16 +10,20 @@ import {useRoute} from '@react-navigation/native';
 import {setSaveMusicAction} from '../../../store/action/index';
 // import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import TrackPlayer, {useProgress} from 'react-native-track-player';
+import TrackPlayer, {
+  useTrackPlayerProgress,
+  useProgress,
+} from 'react-native-track-player';
 import {connect} from 'react-redux';
+import {convertTime} from './convertTime';
 
 const Playmusic = (props) => {
   const route = useRoute();
   const [number, setNumber] = useState(0);
   const [volume, setVolume] = useState(0);
-  const {position, duration} = useProgress();
   const [id, setId] = useState(0);
   const [isPlay, setIsPlay] = useState(true);
+  const {position, duration} = useProgress();
   useEffect(() => {
     TrackPlayer.setupPlayer().then(async () => {
       await TrackPlayer.reset();
@@ -101,29 +105,36 @@ const Playmusic = (props) => {
               marginVertical: scale(10),
             }}>
             <Text style={{color: 'white', fontSize: scale(12)}}>
-              {position}
+              {convertTime(parseInt(position / 60)) +
+                ':' +
+                convertTime(Math.floor(position % 60))}
             </Text>
             <Text style={{color: 'white', fontSize: scale(12)}}>
-              {props.albumMusic[id].time/60}
+              {convertTime(parseInt(duration / 60)) +
+                ':' +
+                convertTime(Math.floor(duration % 60))}
             </Text>
           </View>
         </View>
 
         <Slider
           style={{width: '100%', height: 40}}
-          minimumValue={0}
-          maximumValue={props.albumMusic[id].time}
+          maximumValue={duration}
           minimumTrackTintColor="#FFFFFF"
           maximumTrackTintColor="#000000"
-          onValueChange={(position) => setNumber(position)}
-          step={1}
+          onValueChange={async (value) => {
+            await TrackPlayer.seekTo(value);
+          }}
+          minimumValue={0}
+          value={position}
+          thumbTintColor={'#029676'}
         />
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <IconPlay text="redo-alt" onHandle={Repeat} />
-          <IconPlay text="backward" onHandle={Back} />
-          <IconPlay text={isPlay ? 'pause' : 'play'} onHandle={Play} />
-          <IconPlay text="forward" onHandle={Next} />
-          <IconPlay text="download" />
+          <IconPlay activeOpacity={1} text="redo-alt" onHandle={Repeat} />
+          <IconPlay activeOpacity={1} text="backward" onHandle={Back} />
+          <IconPlay activeOpacity={1} text={isPlay ? 'pause' : 'play'} onHandle={Play} />
+          <IconPlay activeOpacity={1} text="forward" onHandle={Next} />
+          <IconPlay activeOpacity={1} text="download" />
         </View>
         <View>
           <Text
