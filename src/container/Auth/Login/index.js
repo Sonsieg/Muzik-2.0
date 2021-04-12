@@ -67,16 +67,15 @@ export class Login extends Component {
     if (this.validateFied(values.email, values.password)) {
       infoInput.email = values.email;
       infoInput.password = values.password;
-      infoInput.type = 'Account';
       let body_api = {
         body: infoInput,
         callback: (err, data) => {
           // console.log('bước 6: sau khi gọi callback xong, trả về lại data');
-          if (data.error === false) {
+          if (data) {
             // this.props.saveLogin(infoInput);
-            // this.props.saveLoggedUser(data && data.data);
-            this.props.setUserInfoAction(data.data);
-            this.props.setLoginUserAction(infoInput);
+            console.log('____respone', data);
+            // this.props.setUserInfoAction(data.data);
+            this.props.setLoginUserAction(data);
             this.props.setLoginStateAction(true);
             this.props.navigation.navigate('MyTabs');
           }
@@ -114,7 +113,6 @@ export class Login extends Component {
                 fontStyle: 'italic',
                 fontSize: scale(16),
                 color: 'white',
-                
               }}>
               Sign in for awesome chill and relax experiences.
             </Text>

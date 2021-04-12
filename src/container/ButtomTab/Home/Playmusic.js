@@ -13,17 +13,27 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import TrackPlayer, {
   useTrackPlayerProgress,
   useProgress,
+  useTrackPlayerEvents,
 } from 'react-native-track-player';
 import {connect} from 'react-redux';
 import {convertTime} from './convertTime';
 
 const Playmusic = (props) => {
   const route = useRoute();
-  const [number, setNumber] = useState(0);
   const [volume, setVolume] = useState(0);
   const [id, setId] = useState(0);
   const [isPlay, setIsPlay] = useState(true);
   const {position, duration} = useProgress();
+  useTrackPlayerEvents(
+    [
+      'playback-queue-ended',
+      'playback-state',
+      'playback-track-changed',
+      'remote-play',
+      'remote-pause',
+    ],
+    (event) => {},
+  );
   useEffect(() => {
     TrackPlayer.setupPlayer().then(async () => {
       await TrackPlayer.reset();
@@ -124,6 +134,7 @@ const Playmusic = (props) => {
           maximumTrackTintColor="#000000"
           onValueChange={async (value) => {
             await TrackPlayer.seekTo(value);
+            TrackPlayer.setVolume(value);
           }}
           minimumValue={0}
           value={position}
@@ -132,7 +143,11 @@ const Playmusic = (props) => {
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
           <IconPlay activeOpacity={1} text="redo-alt" onHandle={Repeat} />
           <IconPlay activeOpacity={1} text="backward" onHandle={Back} />
-          <IconPlay activeOpacity={1} text={isPlay ? 'pause' : 'play'} onHandle={Play} />
+          <IconPlay
+            activeOpacity={1}
+            text={isPlay ? 'pause' : 'play'}
+            onHandle={Play}
+          />
           <IconPlay activeOpacity={1} text="forward" onHandle={Next} />
           <IconPlay activeOpacity={1} text="download" />
         </View>
@@ -168,11 +183,13 @@ const Playmusic = (props) => {
           <Slider
             style={{width: '85%', height: 40}}
             minimumValue={0}
-            maximumValue={10}
+            maximumValue={1}
             minimumTrackTintColor="#FFFFFF"
             maximumTrackTintColor="white"
-            onValueChange={(values) => setVolume(values)}
-            step={1}
+            onValueChange={async (value) => {
+              await TrackPlayer.setVolume(value);
+            }}
+            step={0.1}
           />
           <Icon name="volume-up" size={scale(20)} color="white" />
         </View>

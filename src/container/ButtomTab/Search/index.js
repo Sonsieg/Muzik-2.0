@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import asset from '../../../asset';
+import Edit from '../../../components/Edit';
 import {scale} from '../../../components/ScaleSheet';
 import SearchForm from '../../../components/SearchForm';
 import Top from '../../../components/Top';
@@ -19,10 +20,11 @@ export class Search extends Component {
         style={{
           height: scale(180),
           width: scale(150),
-          marginRight: scale(10),
           borderRadius: scale(10),
-          marginVertical: scale(20),
-          justifyContent: 'center',
+          marginTop: scale(20),
+          justifyContent: 'space-around',
+          marginHorizontal: scale(10),
+          // backgroundColor:'yellow'
         }}>
         <TouchableOpacity>
           <Image
@@ -63,6 +65,7 @@ export class Search extends Component {
             backgroundColor: '#BBABCF',
             flexDirection: 'row',
             justifyContent: 'space-evenly',
+            marginBottom: scale(20),
           }}>
           <Image
             resizeMode="cover"
@@ -105,8 +108,8 @@ export class Search extends Component {
           style={{
             marginHorizontal: scale(20),
             // marginVertical: scale(10),
-            // justifyContent: 'space-around',
-            flex: 1,
+            justifyContent: 'space-around',
+            // flex: 1,
           }}>
           <Top />
           <Text
@@ -120,36 +123,25 @@ export class Search extends Component {
             Search
           </Text>
           <SearchForm />
+          <Edit text="Danh sách nhạc yêu thích" />
+          <Edit text="Lắng nghe bản nhạc của bạn" />
           <Text
             style={{
               fontSize: scale(24),
               color: 'white',
               //   fontStyle: 'italic',
-            }}>
-            You might like...
-          </Text>
-          <FlatList
-            style={{marginVertical: scale(20)}}
-            data={dataSearch}
-            renderItem={this.renderSearch}
-            keyExtractor={(item) => item.id}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-          <Text
-            style={{
-              fontSize: scale(24),
-              color: 'white',
-              //   fontStyle: 'italic',
+              marginTop: scale(24),
             }}>
             Recently played
           </Text>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={dataAlbum}
             renderItem={this.itemAblum}
             keyExtractor={(item) => item.id}
             showsHorizontalScrollIndicator={false}
+            // style={{backgroundColor:'red'}}
           />
         </View>
       </ImageBackground>
