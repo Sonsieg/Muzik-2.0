@@ -61,7 +61,7 @@ export class UpdateProfile extends Component {
           </View>
           <Text style={styles.text}>Account</Text>
           <Edit
-            onPress={() => this.props.navigation.navigate('Profile')}
+            // onPress={() => this.props.navigation.navigate('Profile')}
             text="Edit Profile"
           />
           <Edit text="Change Password" />

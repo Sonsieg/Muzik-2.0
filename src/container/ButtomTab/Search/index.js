@@ -123,7 +123,10 @@ export class Search extends Component {
             Search
           </Text>
           <SearchForm />
-          <Edit text="Danh sách nhạc yêu thích" />
+          <Edit
+            text="Danh sách nhạc yêu thích"
+            onPress={() => this.props.navigation.navigate('ListLike')}
+          />
           <Edit text="Lắng nghe bản nhạc của bạn" />
           <Text
             style={{

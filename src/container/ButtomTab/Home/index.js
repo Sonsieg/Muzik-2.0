@@ -20,15 +20,24 @@ import {
   setUserInfoAction,
   setLoginStateAction,
   setSaveMusicAction,
+  fetchAsyncAction,
 } from '../../../store/action';
 import {connect} from 'react-redux';
 import SongItem from '../../../components/SongItem';
 import axios from 'axios';
 export class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      muzik: [],
+      heart: false,
+    };
+  }
   renderItem = ({item}) => {
     // console.log('eeeeee', item);
     return (
       <SongItem
+        item={item}
         key={item.id}
         name={item.name}
         image={item.image}
@@ -39,15 +48,38 @@ export class Home extends Component {
             item: item,
           });
         }}
+        onLike={() => this.onLike(item.id)}
       />
     );
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      muzik: [],
-    };
-  }
+  onLike = (id) => {
+    this.likee(id);
+    alert('đã thêm bài hát yêu thích');
+  };
+  likee = async (id) => {
+    console.log('object', id);
+    const response = await fetch(
+      'https://fakeserver-musicaap.herokuapp.com/foreignmusic' + '/' + id,
+      {
+        method: 'PATCH',
+        headers: {
+          // Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          islike: true,
+        }),
+      },
+    )
+      .then((response) => {
+        response.json().then((response) => {
+          // console.log('response____', response);
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   componentDidMount() {
     axios
       .get('https://fakeserver-musicaap.herokuapp.com/foreignmusic')
@@ -55,8 +87,7 @@ export class Home extends Component {
         this.setState({muzik: response.data});
         this.props.setSaveMusicAction(response.data);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
   }
   Emty = () => {
     return (
