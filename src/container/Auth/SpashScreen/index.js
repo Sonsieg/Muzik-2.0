@@ -20,17 +20,18 @@ export class SplashScreen extends Component {
   loadApp = () => {
     const {isChanged, loginStatus, userInfo} = this.props;
 
-    if (loginStatus) {
-      // this.resetLogin();
-      this.props.navigation.navigate('MyTabs');
-    } else {
-      this.props.navigation.navigate('Login');
-    }
+    // if (loginStatus) {
+    //   // this.resetLogin();
+    //   this.props.navigation.navigate('MyTabs');
+    // } else {
+    //   this.props.navigation.navigate('Login');
+    // }
     // if (isChanged) {
     //   this.props.navigation.navigate('Login');
     // } else {
     //   this.props.navigation.navigate('Intro');
     // }
+    this.props.navigation.navigate('MyTabs');
   };
   resetLogin = () => {
     const {userNew} = this.props;

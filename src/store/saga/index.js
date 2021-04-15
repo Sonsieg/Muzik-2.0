@@ -4,11 +4,14 @@ import {
   setUserInfoAction,
   registrationAction,
   forgetPassAction,
+  fetchAsyncAction,
+  setDataAction,
 } from '../action';
 import {
   loginService,
   registrationService,
   forgetPassService,
+  fetchAsyncService,
 } from '../services';
 
 function* loginWatch() {
@@ -76,4 +79,22 @@ function* forgetPassWatch() {
 }
 export default function* rootSaga() {
   yield all([loginWatch, registrationWatch, forgetPassWatch].map(fork));
+}
+function* fetchAsyncWatch() {
+  yield takeLatest(fetchAsyncAction, function* ({payload}) {
+    try {
+      const {endpoint} = payload;
+      const result = yield call(fetchAsyncService, endpoint);
+      if (result) {
+        yield put(setDataAction(result));
+        if (payload?.callback) {
+          payload.callback('', result);
+        }
+      }
+    } catch (error) {
+      throw error;
+    } finally {
+      // else if (payload?.callback) payload.callback("Server Error", {});
+    }
+  });
 }

@@ -71,7 +71,8 @@ export class UpdateProfile extends Component {
           <Dialog
             textOk={'Đồng ý'}
             textCancel={'Từ chối'}
-            pressBtnOK={this.logout}
+            // pressBtnOK={this.logout}
+            pressBtnOK={() => this.props.navigation.navigate('Intro')}
             pressCancel={() => this.popup.hide()}
             message="Bạn muốn đăng xuất ứng dụng ?"
             ref={(ref) => (this.popup = ref)}

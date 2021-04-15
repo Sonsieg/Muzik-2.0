@@ -5,6 +5,7 @@ import {
   setLoginStateAction,
   setLoginUserAction,
   setSaveMusicAction,
+  setDataAction,
 } from '../action';
 // import {} from '../actions';
 export const initialState = {
@@ -13,6 +14,8 @@ export const initialState = {
   user: [],
   isChanged: false,
   albumMusic: [],
+  listPlay: [],
+  listMusic: [],
 };
 
 export default handleActions(
@@ -36,6 +39,17 @@ export default handleActions(
     [setSaveMusicAction.toString()]: (state = initialState, {payload}) => ({
       ...state,
       albumMusic: payload,
+    }),
+    [setDataAction.toString()]: (state, {payload}) => ({
+      ...state,
+      listMusic: payload,
+      listPlay: payload.map((i) => ({
+        id: String(i.id),
+        url: i.url,
+        title: i.name,
+        artist: i.singer,
+        artwork: i.image,
+      })),
     }),
   },
   initialState,

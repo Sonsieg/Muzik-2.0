@@ -63,3 +63,13 @@ export const forgetPassService = async (body_api) => {
   // return kết quả của việc gọi api
   return result;
 };
+export const fetchAsyncService = async (endpoint) => {
+  try {
+    let response = await fetch(
+      `https://fakeserver-musicaap.herokuapp.com/${endpoint}`,
+    );
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};

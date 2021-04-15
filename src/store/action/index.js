@@ -11,6 +11,7 @@ const actions = createActions({
   SET_LOGIN_STATE_ACTION: null,
   SET_LOGIN_USER_ACTION: null,
   SET_SAVE_MUSIC_ACTION: null,
+  SET_DATA_ACTION: null,
 });
 
 export const {
@@ -24,4 +25,5 @@ export const {
   setLoginStateAction,
   setLoginUserAction,
   setSaveMusicAction,
+  setDataAction,
 } = actions;
