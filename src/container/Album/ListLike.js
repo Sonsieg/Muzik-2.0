@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 import {
   FlatList,
@@ -17,11 +18,10 @@ class ListLike extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      muzik: this.props.albumMusic,
+      muzik: [],
     };
   }
   renderItem = ({item}) => {
-    // console.log('eeeeee', item);
     return (
       item.islike === true && (
         <SongItem
@@ -42,16 +42,17 @@ class ListLike extends Component {
     );
   };
   onDisLike = (id) => {
-    this.disLike(id);
-    alert('hủy bỏ bài hát yêu thích');
+    this.dislike(id);
+    alert('đã thêm bài hát yêu thích');
   };
-  disLike = async (id) => {
+  dislike = async (id) => {
     console.log('object', id);
     const response = await fetch(
       'https://fakeserver-musicaap.herokuapp.com/foreignmusic' + '/' + id,
       {
         method: 'PATCH',
         headers: {
+          // Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -60,17 +61,29 @@ class ListLike extends Component {
       },
     )
       .then((response) => {
-        response.json().then((response) => {
-          //   console.log('response____', response);
-        });
+        this.getListMusic();
       })
       .catch((err) => {
         console.error(err);
       });
   };
+  componentDidMount() {
+    this.getListMusic();
+  }
+  getListMusic = () => {
+    axios
+      .get('https://fakeserver-musicaap.herokuapp.com/foreignmusic')
+      .then((response) => {
+        this.setState({muzik: response.data});
+        this.props.setSaveMusicAction(response.data);
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
   render() {
-    console.log('dddd', this.props.albumMusic);
-    const {albumMusic} = this.props;
+    // console.log('dddd', this.props.albumMusic);
+    // const {albumMusic} = this.props;
     return (
       <ImageBackground
         style={{width: '100%', height: '100%'}}
@@ -102,7 +115,6 @@ class ListLike extends Component {
             data={this.state.muzik}
             renderItem={this.renderItem}
             keyExtractor={(item) => item.id.toString()}
-            ListEmptyComponent={() => this.Emty()}
             showsVerticalScrollIndicator={false}
           />
         </View>

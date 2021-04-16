@@ -72,23 +72,25 @@ export class Home extends Component {
       },
     )
       .then((response) => {
-        response.json().then((response) => {
-          // console.log('response____', response);
-        });
+        this.getListMusic()
       })
       .catch((err) => {
         console.error(err);
       });
   };
   componentDidMount() {
+    this.getListMusic()
+  }
+  getListMusic= () => {
     axios
       .get('https://fakeserver-musicaap.herokuapp.com/foreignmusic')
       .then((response) => {
         this.setState({muzik: response.data});
         this.props.setSaveMusicAction(response.data);
       })
-      .catch((error) => {});
+      .catch((error) => {throw error});
   }
+
   Emty = () => {
     return (
       <View style={{justifyContent: 'center'}}>
