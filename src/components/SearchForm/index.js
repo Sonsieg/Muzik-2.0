@@ -9,8 +9,6 @@ export class SearchForm extends Component {
       <View
         style={{
           height: scale(60),
-          //   marginHorizontal: scale(20),
-          //   borderWidth: 2,
           flexDirection: 'row',
           justifyContent: 'space-around',
           backgroundColor: 'white',
@@ -34,6 +32,7 @@ export class SearchForm extends Component {
             fontSize={scale(16)}
             fontStyle="italic"
             placeholder="Artists, songs, or podcasts"
+            onPressIn={this.props.onPress}
           />
         </View>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>

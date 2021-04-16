@@ -3,6 +3,7 @@ import {
   FlatList,
   Image,
   ImageBackground,
+  ScrollView,
   Text,
   TouchableOpacity,
   View,
@@ -109,7 +110,7 @@ export class Search extends Component {
             marginHorizontal: scale(20),
             // marginVertical: scale(10),
             justifyContent: 'space-around',
-            // flex: 1,
+            flex: 1,
           }}>
           <Top />
           <Text

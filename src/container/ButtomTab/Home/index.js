@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import asset from '../../../asset/index';
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   Image,
   ImageBackground,
@@ -54,7 +55,16 @@ export class Home extends Component {
   };
   onLike = (id) => {
     this.likee(id);
-    alert('đã thêm bài hát yêu thích');
+    Alert.alert(
+      'Thông báo',
+      `Thêm bài hát yêu thích thành công`,
+      [
+        {
+          text: 'OK',
+        },
+      ],
+      {cancelable: false},
+    );
   };
   likee = async (id) => {
     console.log('object', id);
@@ -72,24 +82,26 @@ export class Home extends Component {
       },
     )
       .then((response) => {
-        this.getListMusic()
+        this.getListMusic();
       })
       .catch((err) => {
         console.error(err);
       });
   };
   componentDidMount() {
-    this.getListMusic()
+    this.getListMusic();
   }
-  getListMusic= () => {
+  getListMusic = () => {
     axios
       .get('https://fakeserver-musicaap.herokuapp.com/foreignmusic')
       .then((response) => {
         this.setState({muzik: response.data});
         this.props.setSaveMusicAction(response.data);
       })
-      .catch((error) => {throw error});
-  }
+      .catch((error) => {
+        throw error;
+      });
+  };
 
   Emty = () => {
     return (

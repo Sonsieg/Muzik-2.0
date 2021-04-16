@@ -7,6 +7,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {connect} from 'react-redux';
 import asset from '../../asset';
@@ -43,7 +44,16 @@ class ListLike extends Component {
   };
   onDisLike = (id) => {
     this.dislike(id);
-    alert('đã thêm bài hát yêu thích');
+    Alert.alert(
+      'Thông báo',
+      `Bỏ bài hát yêu thích thành công`,
+      [
+        {
+          text: 'OK',
+        },
+      ],
+      {cancelable: false},
+    );
   };
   dislike = async (id) => {
     console.log('object', id);
