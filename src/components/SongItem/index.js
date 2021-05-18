@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {scale} from '../ScaleSheet';
-import asset from '../../asset/index';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 export default class SongItem extends Component {
@@ -11,11 +10,8 @@ export default class SongItem extends Component {
       showHeart: false,
     };
   }
-  // heart = () => {
-  //   this.setState({showHeart: !this.state.showHeart});
-  // };
   render() {
-    const {item, onPress, onLike} = this.props;
+    const {item, onPress, onLike, onPlay} = this.props;
     return (
       item && (
         <View
@@ -24,7 +20,6 @@ export default class SongItem extends Component {
             alignItems: 'center',
             marginVertical: scale(8),
             justifyContent: 'space-between',
-            // backgroundColor:"yellow"
           }}>
           <TouchableOpacity
             style={{flexDirection: 'row', alignItems: 'center'}}
@@ -57,52 +52,26 @@ export default class SongItem extends Component {
               </Text>
             </View>
           </TouchableOpacity>
-          <View>
-            <TouchableOpacity onPress={onLike} >
-              {/* {this.state.showHeart === false ? (
-                <Icon name="heart-outline" size={scale(24)} color="white" />
-              ) : (
-                <Icon2 name="heart" size={scale(23)} color="white" />
-              )} */}
-              {item.islike ? (
-                <Icon2 name="heart" size={scale(23)} color="white" />
-              ) : (
-                <Icon name="heart-outline" size={scale(24)} color="white" />
-              )}
-            </TouchableOpacity>
-          </View>
+          {this.props.heart && (
+            <View>
+              <TouchableOpacity onPress={onLike}>
+                {item.islike ? (
+                  <Icon2 name="heart" size={scale(23)} color="white" />
+                ) : (
+                  <Icon name="heart-outline" size={scale(24)} color="white" />
+                )}
+              </TouchableOpacity>
+            </View>
+          )}
+          {this.props.play && (
+            <View>
+              <TouchableOpacity onPress={onPlay}>
+                <Icon2 name="play" size={scale(20)} color="white" />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       )
     );
   }
 }
-const styles = StyleSheet.create({
-  songitem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    margin: scale(4),
-  },
-  order: {
-    fontSize: scale(24),
-    marginLeft: scale(8),
-    // textDecorationLine: 'underline',
-  },
-  img: {
-    width: scale(64),
-    height: scale(64),
-    borderRadius: scale(4),
-    marginLeft: scale(8),
-  },
-  title: {
-    marginBottom: scale(6),
-    marginLeft: scale(6),
-  },
-  lable: {marginLeft: scale(6)},
-  options: {
-    flexDirection: 'row',
-    position: 'absolute',
-    right: 4,
-    justifyContent: 'space-between',
-  },
-  p4: {padding: scale(4)},
-});

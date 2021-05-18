@@ -17,11 +17,9 @@ import Top from '../../../components/Top';
 import dataAlbum, {SongList} from '../../../data/index';
 import Feel from '../../../components/Feel';
 import {
-  loginAction,
   setUserInfoAction,
   setLoginStateAction,
   setSaveMusicAction,
-  fetchAsyncAction,
 } from '../../../store/action';
 import {connect} from 'react-redux';
 import SongItem from '../../../components/SongItem';
@@ -35,9 +33,9 @@ export class Home extends Component {
     };
   }
   renderItem = ({item}) => {
-    // console.log('eeeeee', item);
     return (
       <SongItem
+        heart
         item={item}
         key={item.id}
         name={item.name}

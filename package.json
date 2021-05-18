@@ -21,6 +21,7 @@
     "apisauce": "^2.0.1",
     "axios": "^0.21.1",
     "link": "^0.1.5",
+    "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "native-base": "^2.15.2",
     "promise": "^8.1.0",

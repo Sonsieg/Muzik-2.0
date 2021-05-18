@@ -19,6 +19,7 @@ import Playmusic from './container/ButtomTab/Home/Playmusic';
 import SplashScreen from './container/Auth/SpashScreen';
 import {useSelector} from 'react-redux';
 import ListLike from './container/Album/ListLike';
+import SearchItem from './container/ButtomTab/Search/SearchItem';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
@@ -106,6 +107,7 @@ function MyStack() {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Playmusic" component={Playmusic} />
       <Stack.Screen name="ListLike" component={ListLike} />
+      <Stack.Screen name="SearchItem" component={SearchItem} />
       {/* <Stack.Screem name="ListLike" component={ListLike} /> */}
     </Stack.Navigator>
   );

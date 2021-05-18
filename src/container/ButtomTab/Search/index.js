@@ -11,10 +11,19 @@ import {
 import asset from '../../../asset';
 import Edit from '../../../components/Edit';
 import {scale} from '../../../components/ScaleSheet';
-import SearchForm from '../../../components/SearchForm';
 import Top from '../../../components/Top';
-import {dataAlbum, dataSearch} from '../../../data';
+import {dataAlbum} from '../../../data';
+import _ from 'lodash';
 export class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      data: [],
+      fullData: [],
+      error: null,
+    };
+  }
   itemAblum = ({item}) => {
     return (
       <View
@@ -25,7 +34,6 @@ export class Search extends Component {
           marginTop: scale(20),
           justifyContent: 'space-around',
           marginHorizontal: scale(10),
-          // backgroundColor:'yellow'
         }}>
         <TouchableOpacity>
           <Image
@@ -59,9 +67,7 @@ export class Search extends Component {
           style={{
             height: scale(100),
             backgroundColor: 'white',
-            // marginHorizontal: scale(10),
             borderRadius: scale(10),
-            // width:200,
             marginRight: scale(10),
             backgroundColor: '#BBABCF',
             flexDirection: 'row',
@@ -71,10 +77,8 @@ export class Search extends Component {
           <Image
             resizeMode="cover"
             style={{
-              //   justifyContent: 'space-around',
               width: scale(100),
               height: scale(100),
-              // marginLeft:scale(10),
               borderRadius: scale(10),
             }}
             source={item.img}
@@ -108,7 +112,6 @@ export class Search extends Component {
         <View
           style={{
             marginHorizontal: scale(20),
-            // marginVertical: scale(10),
             justifyContent: 'space-around',
             flex: 1,
           }}>
@@ -123,30 +126,46 @@ export class Search extends Component {
             }}>
             Search
           </Text>
-          <SearchForm />
-          <Edit
-            text="Danh sách nhạc yêu thích"
-            onPress={() => this.props.navigation.navigate('ListLike')}
-          />
-          <Edit text="Lắng nghe bản nhạc của bạn" />
-          <Text
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('SearchItem')}
             style={{
-              fontSize: scale(24),
-              color: 'white',
-              //   fontStyle: 'italic',
-              marginTop: scale(24),
+              height: scale(60),
+              justifyContent: 'center',
+              backgroundColor: 'white',
+              borderRadius: scale(30),
+              alignItems: 'center',
+              marginTop: 20,
+              marginBottom: 20
             }}>
-            Recently played
-          </Text>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            data={dataAlbum}
-            renderItem={this.itemAblum}
-            keyExtractor={(item) => item.id}
-            showsHorizontalScrollIndicator={false}
-            // style={{backgroundColor:'red'}}
-          />
+            <Text style={{textAlign: 'center', fontSize: 18}}>
+              Tìm kiếm bài hát nào !
+            </Text>
+          </TouchableOpacity>
+          <ScrollView
+            style={{height: '50%'}}
+            showsVerticalScrollIndicator={false}>
+            <Edit
+              text="Danh sách nhạc yêu thích"
+              onPress={() => this.props.navigation.navigate('ListLike')}
+            />
+            <Edit text="Lắng nghe bản nhạc của bạn" />
+            <Text
+              style={{
+                fontSize: scale(24),
+                color: 'white',
+                marginTop: scale(24),
+              }}>
+              Recently played
+            </Text>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+              data={dataAlbum}
+              renderItem={this.itemAblum}
+              keyExtractor={(item) => item.id}
+              showsHorizontalScrollIndicator={false}
+            />
+          </ScrollView>
         </View>
       </ImageBackground>
     );

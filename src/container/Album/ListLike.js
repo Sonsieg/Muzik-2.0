@@ -26,6 +26,7 @@ class ListLike extends Component {
     return (
       item.islike === true && (
         <SongItem
+          heart
           item={item}
           key={item.id}
           name={item.name}
