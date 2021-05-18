@@ -82,8 +82,6 @@ export default class SearchItem extends Component {
         data.push(this.state.data[i]);
       }
     }
-    console.log('this is text', text, this.state.data[3]?.name);
-    console.log('this is text', data);
     this.setState({dataUse: data});
   };
   render() {
