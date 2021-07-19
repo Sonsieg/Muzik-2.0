@@ -27,6 +27,7 @@ export default handleActions(
     [removeUserInfoAction.toString()]: (state = initialState, {}) => ({
       ...state,
       ...initialState,
+      loginStatus: false,
     }),
     [setLoginStateAction.toString()]: (state = initialState, {payload}) => ({
       ...state,

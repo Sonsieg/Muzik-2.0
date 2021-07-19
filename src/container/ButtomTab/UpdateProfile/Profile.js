@@ -22,8 +22,8 @@ export class Profile extends Component {
     super(props);
     this.state = {
       name: 'Phạm Quang Núi',
-      phone: props.userInfo.phone,
-      birthday: props.userInfo.birthday,
+      phone: '0914241029',
+      birthday: '03-10-1999',
       isDateTimePickerVisible: false,
     };
   }
@@ -37,37 +37,7 @@ export class Profile extends Component {
     });
   };
   upDateInfo = () => {
-    const {userInfo, updateProfile} = this.props;
-    const infoUpdate = {};
-
-    infoUpdate.email = this.state.email;
-    infoUpdate.fullname = this.state.name;
-    infoUpdate.phone = this.state.phone;
-    infoUpdate.sex = `${this.state.checked}`;
-    infoUpdate.birthday = this.state.birthday;
-    if (this.validateFied(this.state.checked, this.state.birthday)) {
-      updateProfile(user._id.$id, infoUpdate, (err, data) => {
-        if (err) {
-          return;
-        }
-        if (data && data.data && data.data.error === false) {
-          this.dropDownAlertRef.alertWithType(
-            'success',
-            'Thành công',
-            'Cập nhập tài khoản thành công !!',
-          );
-          const dataUser = {data: data && data.data.data};
-          this.props.saveLoggedUser(dataUser);
-        }
-        if (data && data.data && data.data.error === true) {
-          this.dropDownAlertRef.alertWithType(
-            'error',
-            'Thất bại',
-            `${data && data.data && data.data.message[0]}`,
-          );
-        }
-      });
-    }
+    alert('Tất cả vẫn chỉ là trải nghiệm !');
   };
   render() {
     const {birthday} = this.state;

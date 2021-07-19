@@ -87,7 +87,7 @@ function MyStack() {
   const loginStatus = useSelector((state) => state.loginStatus);
   return (
     <Stack.Navigator initialRouteName="Intro" headerMode="none">
-      {/* {!loginStatus && (
+      {!loginStatus && (
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
       )}
       {!loginStatus && <Stack.Screen name="Intro" component={Intro} />}
@@ -100,14 +100,16 @@ function MyStack() {
       )}
       {loginStatus && <Stack.Screen name="MyTabs" component={MyTabs} />}
       {loginStatus && <Stack.Screen name="Profile" component={Profile} />}
-      {loginStatus && <Stack.Screen name="Playmusic" component={Playmusic} />} */}
-
+      {loginStatus && <Stack.Screen name="Playmusic" component={Playmusic} />}
+      {loginStatus && <Stack.Screen name="ListLike" component={ListLike} />}
+      {loginStatus && <Stack.Screen name="SearchItem" component={SearchItem} />}
+      {/*
       <Stack.Screen name="Intro" component={Intro} />
       <Stack.Screen name="MyTabs" component={MyTabs} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Playmusic" component={Playmusic} />
       <Stack.Screen name="ListLike" component={ListLike} />
-      <Stack.Screen name="SearchItem" component={SearchItem} />
+      <Stack.Screen name="SearchItem" component={SearchItem} /> */}
       {/* <Stack.Screem name="ListLike" component={ListLike} /> */}
     </Stack.Navigator>
   );

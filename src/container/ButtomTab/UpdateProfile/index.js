@@ -23,7 +23,7 @@ export class UpdateProfile extends Component {
 
   logout = () => {
     this.props.removeUserInfoAction();
-    // this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Login');
   };
   render() {
     return (
@@ -61,7 +61,7 @@ export class UpdateProfile extends Component {
           </View>
           <Text style={styles.text}>Account</Text>
           <Edit
-            // onPress={() => this.props.navigation.navigate('Profile')}
+            onPress={() => this.props.navigation.navigate('Profile')}
             text="Edit Profile"
           />
           <Edit text="Change Password" />
@@ -72,7 +72,7 @@ export class UpdateProfile extends Component {
             textOk={'Đồng ý'}
             textCancel={'Từ chối'}
             // pressBtnOK={this.logout}
-            pressBtnOK={() => this.props.navigation.navigate('Intro')}
+            pressBtnOK={() => this.props.removeUserInfoAction()}
             pressCancel={() => this.popup.hide()}
             message="Bạn muốn đăng xuất ứng dụng ?"
             ref={(ref) => (this.popup = ref)}

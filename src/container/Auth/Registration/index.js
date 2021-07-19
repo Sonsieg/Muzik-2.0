@@ -20,11 +20,11 @@ export class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Chu Du',
-      email: 'ngocyeuanh10x@gmail.com',
+      name: 'Nguyen Lan Huong',
+      email: 'maithuhoai@gmail.com',
       password: 'sondaik9x',
       confirmPassWord: 'sondaik9x',
-      phone: '0981223718',
+      phone: '0914241029',
     };
   }
   showAlert = (message) => {

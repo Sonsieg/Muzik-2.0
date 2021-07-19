@@ -27,7 +27,7 @@ export class Login extends Component {
     super(props);
     this.state = {
       token: null,
-      email: 'buison1696@gmail.com',
+      email: 'son@gmail.com',
       password: '123456789',
     };
   }
@@ -63,27 +63,27 @@ export class Login extends Component {
   goLogin = (values) => {
     // console.log('lg1', values);
     // const {loginAction} = this.props;
-    const infoInput = {};
-    if (this.validateFied(values.email, values.password)) {
-      infoInput.email = values.email;
-      infoInput.password = values.password;
-      let body_api = {
-        body: infoInput,
-        callback: (err, data) => {
-          // console.log('bước 6: sau khi gọi callback xong, trả về lại data');
-          if (data) {
-            // this.props.saveLogin(infoInput);
-            console.log('____respone', data);
-            // this.props.setUserInfoAction(data.data);
-            this.props.setLoginUserAction(data);
-            this.props.setLoginStateAction(true);
-            this.props.navigation.navigate('MyTabs');
-          }
-        },
-      };
-      // console.log('buoc 1: goi login');
-      this.props.loginAction(body_api);
-    }
+    // const infoInput = {};
+    // if (this.validateFied(values.email, values.password)) {
+    //   infoInput.email = values.email;
+    //   infoInput.password = values.password;
+    //   let body_api = {
+    //     body: infoInput,
+    //     callback: (err, data) => {
+    //       // console.log('bước 6: sau khi gọi callback xong, trả về lại data');
+    //       if (data) {
+    //         // this.props.saveLogin(infoInput);
+    //         console.log('____respone', data);
+    //         // this.props.setUserInfoAction(data.data);
+    //         this.props.setLoginUserAction(data);
+    this.props.setLoginStateAction(true);
+    // this.props.navigation.navigate('MyTabs');
+    //       }
+    //     },
+    //   };
+    //   // console.log('buoc 1: goi login');
+    //   this.props.loginAction(body_api);
+    // }
   };
   render() {
     const {email, password} = this.state;

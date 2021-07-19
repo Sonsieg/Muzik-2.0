@@ -55,7 +55,7 @@ export class Home extends Component {
     this.likee(id);
     Alert.alert(
       'Thông báo',
-      `Thêm bài hát yêu thích thành công`,
+      'Thêm bài hát yêu thích thành công',
       [
         {
           text: 'OK',
@@ -155,6 +155,7 @@ export class Home extends Component {
             keyExtractor={(item) => item.id.toString()}
             ListEmptyComponent={() => this.Emty()}
             showsVerticalScrollIndicator={false}
+            key={(item) => item.id.toString()}
           />
         </View>
       </ImageBackground>
